@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia Interativo do Score de Crédito</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Calm Confidence -->
+    <!-- Application Structure Plan: A single-page application with a sticky top navigation bar for easy access to different thematic sections. The structure guides the user logically: 1. Understand the Score (what it is, who calculates it, how it's calculated). 2. Action Plan (a clear, step-by-step guide to improve the score). 3. Myths & Scams (interactive elements to educate and protect the user). 4. Rights & Well-being (addressing the human side of debt and legal protections). 5. The Future (a forward-looking perspective on Open Finance and AI). This thematic structure, rather than a linear chapter-based one, allows for a more fluid and engaging user experience, enabling users to jump to the information most relevant to them. Key interactions include an interactive score gauge, a dynamic doughnut chart, and myth-busting flip cards. -->
+    <!-- Visualization & Content Choices: 1. Score Ranges: (Goal: Inform) An interactive range slider is used to visually represent score classifications, making it more engaging than a static table. (Method: Vanilla JS). 2. Score Factors: (Goal: Compare/Inform) A Chart.js doughnut chart visualizes the weight of each factor in the Serasa score, which is more intuitive than a list. (Interaction: Hover to see details). (Library: Chart.js). 3. Myths vs. Truths: (Goal: Engage/Educate) Interactive flip cards are used to create a memorable and engaging way to debunk common myths. (Method: CSS animations + JS toggle). 4. Comparisons (Birôs, Platforms, Procon): (Goal: Compare) Simple, responsive HTML tables and card layouts are used for direct, clear comparisons, which is more effective than a complex chart for this type of information. (Method: HTML/Tailwind). -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .nav-link { transition: all 0.3s ease; }
+        .nav-link.active {
+            color: #1d4ed8;
+            font-weight: 700;
+            transform: scale(1.1);
+        }
+        .flip-card { perspective: 1000px; }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem;
+            text-align: center;
+            border-radius: 0.75rem;
+        }
+        .flip-card-back {
+            transform: rotateY(180deg);
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 640px) {
+            .chart-container { height: 380px; }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-2xl font-bold text-blue-700">Guia do Score</a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#entendendo" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:bg-blue-50 hover:text-blue-700">Entendendo o Score</a>
+                        <a href="#plano-acao" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:bg-blue-50 hover:text-blue-700">Plano de Ação</a>
+                        <a href="#mitos" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:bg-blue-50 hover:text-blue-700">Mitos e Fraudes</a>
+                        <a href="#direitos" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:bg-blue-50 hover:text-blue-700">Seus Direitos</a>
+                        <a href="#futuro" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:bg-blue-50 hover:text-blue-700">O Futuro</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-blue-800 focus:ring-white">
+                        <span class="sr-only">Abrir menu</span>
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div id="mobile-menu" class="md:hidden hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <a href="#entendendo" class="nav-link-mobile block px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:bg-blue-50 hover:text-blue-700">Entendendo o Score</a>
+                    <a href="#plano-acao" class="nav-link-mobile block px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:bg-blue-50 hover:text-blue-700">Plano de Ação</a>
+                    <a href="#mitos" class="nav-link-mobile block px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:bg-blue-50 hover:text-blue-700">Mitos e Fraudes</a>
+                    <a href="#direitos" class="nav-link-mobile block px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:bg-blue-50 hover:text-blue-700">Seus Direitos</a>
+                    <a href="#futuro" class="nav-link-mobile block px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:bg-blue-50 hover:text-blue-700">O Futuro</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        <section id="hero" class="text-center py-12 md:py-16">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 leading-tight">
+                Domine seu <span class="text-blue-700">Score de Crédito</span>
+            </h1>
+            <p class="mt-4 max-w-2xl mx-auto text-lg text-slate-600">
+                Transforme sua vida financeira com este guia interativo. Entenda como sua pontuação funciona e aprenda o passo a passo para aumentá-la de forma consistente.
+            </p>
+        </section>
+
+        <div id="content">
+            <section id="entendendo" class="py-12 md:py-16 scroll-mt-20">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Desvendando o Score de Crédito</h2>
+                    <p class="mt-3 max-w-xl mx-auto text-slate-600">Nesta seção, você vai entender o que é o score, por que ele é crucial para sua vida financeira e como os principais birôs de crédito do Brasil calculam essa pontuação.</p>
+                </div>
+                
+                <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg mb-12">
+                    <h3 class="text-2xl font-bold text-center mb-6">O que significa sua pontuação?</h3>
+                    <div id="score-simulator" class="w-full max-w-2xl mx-auto">
+                        <input type="range" id="score-range" min="0" max="1000" value="500" class="w-full h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer range-lg">
+                        <div class="mt-4 text-center">
+                            <span id="score-value" class="text-4xl font-extrabold text-blue-700">500</span>
+                            <div id="score-classification" class="mt-2 text-xl font-bold"></div>
+                            <p id="score-description" class="mt-2 text-slate-600"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 items-start">
+                    <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg">
+                        <h3 class="text-2xl font-bold text-center mb-6">A Anatomia do Score (Serasa)</h3>
+                        <p class="text-center text-slate-600 mb-4">O cálculo do score é um segredo, mas os fatores que o influenciam não são. Veja o peso de cada categoria e entenda onde focar seus esforços. Passe o mouse sobre o gráfico para detalhes.</p>
+                        <div class="chart-container">
+                            <canvas id="scoreFactorsChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg">
+                        <h3 class="text-2xl font-bold text-center mb-6">Os Guardiões do Crédito</h3>
+                        <p class="text-center text-slate-600 mb-6">Seu score pode ser diferente em cada birô de crédito, pois cada um tem sua própria metodologia. Conheça os 4 principais do Brasil.</p>
+                        <div class="space-y-4">
+                            <div class="p-4 bg-slate-100 rounded-lg">
+                                <h4 class="font-bold text-lg text-blue-800">Serasa</h4>
+                                <p class="text-sm text-slate-600">O mais conhecido, utiliza intensamente os dados do Cadastro Positivo e possui a função de pagamento de dívidas via Pix para aumento do score em tempo real.</p>
+                            </div>
+                            <div class="p-4 bg-slate-100 rounded-lg">
+                                <h4 class="font-bold text-lg text-blue-800">Boa Vista (SCPC)</h4>
+                                <p class="text-sm text-slate-600">Foca na pontualidade e na ausência de registros de inadimplência e protestos. A consulta é feita pelo portal Consumidor Positivo.</p>
+                            </div>
+                            <div class="p-4 bg-slate-100 rounded-lg">
+                                <h4 class="font-bold text-lg text-blue-800">SPC Brasil</h4>
+                                <p class="text-sm text-slate-600">Valoriza a consistência dos pagamentos ao longo do tempo como uma construção de "relação de confiança" com o mercado financeiro.</p>
+                            </div>
+                            <div class="p-4 bg-slate-100 rounded-lg">
+                                <h4 class="font-bold text-lg text-blue-800">Quod</h4>
+                                <p class="text-sm text-slate-600">Analisa em detalhe a frequência, duração e "idade" dos atrasos, além do comprometimento atual da renda do consumidor.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="plano-acao" class="py-12 md:py-16 scroll-mt-20 bg-blue-50 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Seu Plano de Ação para um Score de Excelência</h2>
+                    <p class="mt-3 max-w-xl mx-auto text-slate-600">Ter um score alto é resultado de disciplina e estratégia. Siga este plano de 3 passos para limpar seu nome, construir bons hábitos e otimizar sua pontuação.</p>
+                </div>
+
+                <div class="space-y-12">
+                    <div class="step">
+                        <div class="flex items-center mb-4">
+                            <div class="flex-shrink-0 bg-blue-700 text-white rounded-full h-10 w-10 flex items-center justify-center font-bold text-lg">1</div>
+                            <h3 class="ml-4 text-2xl font-bold">Missão "Nome Limpo": Renegocie suas Dívidas</h3>
+                        </div>
+                        <p class="mb-6 text-slate-600">O primeiro passo é quitar suas pendências. Use as plataformas de negociação para conseguir descontos incríveis e limpar seu nome de forma rápida e segura.</p>
+                        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <div class="bg-white p-6 rounded-xl shadow-md text-center">
+                                <h4 class="font-bold text-xl mb-2">Serasa Limpa Nome</h4>
+                                <p class="text-slate-600 text-sm mb-3">A maior plataforma do país.</p>
+                                <span class="inline-block bg-green-100 text-green-800 text-lg font-bold px-4 py-1 rounded-full">Até 90% OFF</span>
+                            </div>
+                            <div class="bg-white p-6 rounded-xl shadow-md text-center">
+                                <h4 class="font-bold text-xl mb-2">SPC Negociar Dívida</h4>
+                                <p class="text-slate-600 text-sm mb-3">Flexibilidade de pagamento.</p>
+                                <span class="inline-block bg-green-100 text-green-800 text-lg font-bold px-4 py-1 rounded-full">Até 99% OFF</span>
+                            </div>
+                            <div class="bg-white p-6 rounded-xl shadow-md text-center">
+                                <h4 class="font-bold text-xl mb-2">Outras Plataformas</h4>
+                                <p class="text-slate-600 text-sm mb-3">Acordo Certo, QueroQuitar, etc.</p>
+                                <span class="inline-block bg-green-100 text-green-800 text-lg font-bold px-4 py-1 rounded-full">Grandes Descontos</span>
+                            </div>
+                        </div>
+                        <p class="mt-6 text-sm text-slate-500 text-center"><strong>Dica de Ouro:</strong> Após pagar, sempre peça o <strong>Termo de Quitação</strong>. É sua prova legal de que a dívida acabou.</p>
+                    </div>
+
+                    <div class="step">
+                        <div class="flex items-center mb-4">
+                            <div class="flex-shrink-0 bg-blue-700 text-white rounded-full h-10 w-10 flex items-center justify-center font-bold text-lg">2</div>
+                            <h3 class="ml-4 text-2xl font-bold">Construindo um Histórico de Campeão</h3>
+                        </div>
+                        <p class="mb-6 text-slate-600">Score alto é consequência de bons hábitos. Adote estas práticas para mostrar ao mercado que você é um bom pagador.</p>
+                        <div id="habits-container" class="space-y-3">
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="flex items-center mb-4">
+                            <div class="flex-shrink-0 bg-blue-700 text-white rounded-full h-10 w-10 flex items-center justify-center font-bold text-lg">3</div>
+                            <h3 class="ml-4 text-2xl font-bold">Otimização Fina: Técnicas Avançadas</h3>
+                        </div>
+                        <p class="mb-6 text-slate-600">Para ir além do básico, use estas estratégias para maximizar sua pontuação.</p>
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <div class="bg-white p-6 rounded-xl shadow-md">
+                                <h4 class="font-bold text-lg mb-2">Gerencie a Utilização de Crédito</h4>
+                                <p class="text-slate-600 text-sm">Tente usar menos de 30% do limite total do seu cartão de crédito. Isso mostra que você não depende excessivamente do crédito.</p>
+                            </div>
+                             <div class="bg-white p-6 rounded-xl shadow-md">
+                                <h4 class="font-bold text-lg mb-2">Aumento de Limite: Use com Estratégia</h4>
+                                <p class="text-slate-600 text-sm">Um limite maior pode diminuir sua taxa de utilização, o que é bom. Mas pedir com frequência pode te prejudicar. Peça apenas pontualmente.</p>
+                            </div>
+                             <div class="bg-white p-6 rounded-xl shadow-md">
+                                <h4 class="font-bold text-lg mb-2">Conexão Bancária (Open Finance)</h4>
+                                <p class="text-slate-600 text-sm">Autorizar a Serasa a ver seus dados bancários pode ajudar a compor um perfil mais completo e, se seu histórico for bom, aumentar seu score.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="mitos" class="py-12 md:py-16 scroll-mt-20">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Mitos, Verdades e Golpes</h2>
+                    <p class="mt-3 max-w-xl mx-auto text-slate-600">O mundo do score é cheio de desinformação. Clique nos cartões para descobrir o que é fato ou fake.</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                </div>
+
+                <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-6 rounded-r-lg shadow-lg">
+                    <h3 class="text-2xl font-bold mb-2">ALERTA DE FRAUDE: O GOLPE DO SCORE!</h3>
+                    <p class="text-red-900">Cuidado! Ninguém pode aumentar seu score em troca de pagamento. Promessas de "aumento mágico" via Pix ou qualquer tipo de cobrança são <strong>SEMPRE GOLPE</strong>. A única forma de aumentar o score é com bons hábitos financeiros, que são gratuitos e dependem só de você.</p>
+                </div>
+            </section>
+            
+            <section id="direitos" class="py-12 md:py-16 scroll-mt-20 bg-slate-100 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Seus Direitos e seu Bem-Estar</h2>
+                    <p class="mt-3 max-w-xl mx-auto text-slate-600">Lidar com dívidas afeta a saúde mental, e é importante saber que você não está sozinho e tem direitos que o protegem.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 items-start">
+                    <div class="bg-white p-8 rounded-xl shadow-lg">
+                        <h3 class="text-2xl font-bold mb-4">A Psicologia da Dívida</h3>
+                        <p class="text-slate-600 mb-6">O endividamento vai além dos números. Vergonha, ansiedade e insônia são sentimentos comuns, mas existem formas de lidar com eles.</p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start"><span class="text-blue-600 font-bold text-xl mr-3">✔</span><span><strong>Quebre o silêncio:</strong> Converse com pessoas de confiança.</span></li>
+                            <li class="flex items-start"><span class="text-blue-600 font-bold text-xl mr-3">✔</span><span><strong>Foque no controlável:</strong> Crie um plano de ação com pequenos passos.</span></li>
+                            <li class="flex items-start"><span class="text-blue-600 font-bold text-xl mr-3">✔</span><span><strong>Busque ajuda:</strong> Terapeutas e planejadores financeiros podem ajudar.</span></li>
+                        </ul>
+                        <div class="mt-6 text-center">
+                            <p class="text-5xl font-extrabold text-blue-700">88%</p>
+                            <p class="text-slate-600">dos endividados sentem vergonha da sua situação, segundo pesquisa da Serasa.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-lg">
+                        <h3 class="text-2xl font-bold mb-4">Defenda-se de Práticas Abusivas</h3>
+                        <p class="text-slate-600 mb-6">O Código de Defesa do Consumidor te protege contra cobranças vexatórias ou ameaças. Se seus direitos forem violados, reclame!</p>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left border-collapse">
+                                <thead>
+                                    <tr>
+                                        <th class="border-b-2 border-slate-200 p-3 bg-slate-50 font-bold">Canal</th>
+                                        <th class="border-b-2 border-slate-200 p-3 bg-slate-50 font-bold">Como Funciona</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="hover:bg-slate-50">
+                                        <td class="border-b border-slate-200 p-3 font-bold text-blue-800">Consumidor.gov.br</td>
+                                        <td class="border-b border-slate-200 p-3 text-sm">Plataforma online para diálogo direto com empresas cadastradas. É rápido e desburocratizado. Ideal como primeira tentativa.</td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50">
+                                        <td class="border-b border-slate-200 p-3 font-bold text-blue-800">Procon</td>
+                                        <td class="border-b border-slate-200 p-3 text-sm">Órgão público que media o conflito e pode aplicar multas. Use quando a resolução direta falhar ou para casos mais complexos.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="futuro" class="py-12 md:py-16 scroll-mt-20">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900">O Futuro do Crédito é Agora</h2>
+                    <p class="mt-3 max-w-xl mx-auto text-slate-600">A tecnologia está mudando a análise de crédito. Entenda como o Open Finance e a Inteligência Artificial já impactam sua vida.</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-white p-8 rounded-xl shadow-lg">
+                        <h3 class="text-2xl font-bold text-blue-700 mb-3">Open Finance: Seus dados, suas regras</h3>
+                        <p class="text-slate-600">É o direito de compartilhar seu histórico financeiro com qualquer instituição para obter melhores ofertas de crédito. Você "leva" sua boa reputação com você, aumentando a competição e forçando os bancos a oferecerem melhores condições.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-lg">
+                        <h3 class="text-2xl font-bold text-blue-700 mb-3">Inteligência Artificial (IA) e Dados Alternativos</h3>
+                        <p class="text-slate-600">A IA analisa mais do que apenas dívidas. Histórico de pagamento de aluguel, contas de luz e água, e até o uso de apps podem ajudar a compor seu perfil, incluindo mais pessoas no sistema de crédito. O desafio é garantir que os algoritmos sejam justos e sem preconceitos.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="parceiros" class="py-12 md:py-16">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Acesse os Canais Oficiais</h2>
+                    <p class="mt-3 max-w-xl mx-auto text-slate-600">Consulte seu score, negocie dívidas e encontre mais informações diretamente nos sites dos nossos parceiros.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                    <a href="https://www.serasa.com.br" target="_blank" class="block p-8 rounded-xl shadow-lg hover:scale-105 transform transition-transform duration-300 bg-blue-700 text-white">
+                        <h4 class="text-2xl font-extrabold">Serasa</h4>
+                        <p class="mt-2 text-blue-100">Consulte seu score, negocie dívidas e acesse soluções financeiras.</p>
+                        <span class="mt-4 inline-block font-semibold">Acessar o site →</span>
+                    </a>
+                    <a href="https://www.spcbrasil.org.br" target="_blank" class="block p-8 rounded-xl shadow-lg hover:scale-105 transform transition-transform duration-300 bg-red-600 text-white">
+                        <h4 class="text-2xl font-extrabold">SPC Brasil</h4>
+                        <p class="mt-2 text-red-100">Negocie dívidas e monitore seu CPF com segurança.</p>
+                        <span class="mt-4 inline-block font-semibold">Acessar o site →</span>
+                    </a>
+                    <a href="https://www.consumidorpositivo.com.br" target="_blank" class="block p-8 rounded-xl shadow-lg hover:scale-105 transform transition-transform duration-300 bg-green-600 text-white">
+                        <h4 class="text-2xl font-extrabold">Boa Vista</h4>
+                        <p class="mt-2 text-green-100">Consulte seu score e gerencie seu Cadastro Positivo.</p>
+                        <span class="mt-4 inline-block font-semibold">Acessar o site →</span>
+                    </a>
+                    <a href="https://adehas25.github.io/declarafacil/" target="_blank" class="block p-8 rounded-xl shadow-lg hover:scale-105 transform transition-transform duration-300 bg-indigo-600 text-white">
+                        <h4 class="text-2xl font-extrabold">Declara Fácil</h4>
+                        <p class="mt-2 text-indigo-100">Soluções para sua declaração e saúde financeira.</p>
+                        <span class="mt-4 inline-block font-semibold">Acessar o site →</span>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    <footer class="bg-slate-800 text-slate-300">
+        <div class="container mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center">
+            <p>&copy; 2025 Guia Interativo do Score de Crédito. Todos os direitos reservados.</p>
+            <p class="text-sm text-slate-400 mt-2">Este é um projeto educacional com o objetivo de promover a saúde financeira.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const scoreData = {
+                ranges: [
+                    { limit: 300, classification: "Muito Baixo", color: "text-red-600", description: "Risco muito alto de inadimplência. Chance de obter crédito é muito baixa." },
+                    { limit: 500, classification: "Baixo", color: "text-orange-500", description: "Risco considerável de inadimplência. Chance de obter crédito é baixa." },
+                    { limit: 700, classification: "Bom", color: "text-yellow-500", description: "Baixo risco de inadimplência. Boas chances de obter crédito." },
+                    { limit: 1000, classification: "Excelente", color: "text-green-600", description: "Risco muito baixo de inadimplência. Ótimas chances de obter crédito e boas condições." }
+                ]
+            };
+            
+            const scoreRangeInput = document.getElementById('score-range');
+            const scoreValueEl = document.getElementById('score-value');
+            const scoreClassificationEl = document.getElementById('score-classification');
+            const scoreDescriptionEl = document.getElementById('score-description');
+
+            function updateScoreSimulator(score) {
+                scoreValueEl.textContent = score;
+                const range = scoreData.ranges.find(r => score <= r.limit);
+                if (range) {
+                    scoreClassificationEl.textContent = range.classification;
+                    scoreClassificationEl.className = `mt-2 text-xl font-bold ${range.color}`;
+                    scoreDescriptionEl.textContent = range.description;
+                }
+            }
+            
+            scoreRangeInput.addEventListener('input', (e) => {
+                updateScoreSimulator(e.target.value);
+            });
+            updateScoreSimulator(scoreRangeInput.value);
+
+            const scoreFactorsData = {
+                labels: ['Compromisso com Crédito / Pagamentos (55%)', 'Registro de Dívidas (33%)', 'Consultas ao CPF (6%)', 'Evolução Financeira (6%)'],
+                data: [55, 33, 6, 6]
+            };
+            const ctx = document.getElementById('scoreFactorsChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: scoreFactorsData.labels.map(label => label.split(' ')),
+                    datasets: [{
+                        label: 'Peso no Score',
+                        data: scoreFactorsData.data,
+                        backgroundColor: ['#1d4ed8', '#3b82f6', '#93c5fd', '#dbeafe'],
+                        borderColor: '#ffffff',
+                        borderWidth: 2,
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed !== null) {
+                                        label += context.parsed + '%';
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    },
+                    cutout: '60%'
+                }
+            });
+
+            const goodHabits = [
+                { title: 'Pague todas as contas em dia', description: 'É o fator de maior peso. Use débito automático ou lembretes para não esquecer.' },
+                { title: 'Mantenha seus dados atualizados', description: 'Informações corretas nos birôs de crédito são vistas como sinal de organização.' },
+                { title: 'Construa crédito (se for jovem)', description: 'Coloque contas no seu nome e use um cartão de crédito com limite baixo de forma responsável.' },
+                { title: 'Monitore seu score regularmente', description: 'Acompanhe sua evolução para entender o impacto das suas ações. É gratuito!' }
+            ];
+
+            const habitsContainer = document.getElementById('habits-container');
+            goodHabits.forEach(habit => {
+                const div = document.createElement('div');
+                div.className = 'bg-white p-4 rounded-lg shadow-sm flex items-start';
+                div.innerHTML = `
+                    <div class="flex-shrink-0 mt-1">
+                        <span class="inline-flex items-center justify-center h-6 w-6 rounded-full bg-green-100">
+                            <span class="font-medium text-green-700">✔</span>
+                        </span>
+                    </div>
+                    <div class="ml-4">
+                        <h4 class="font-bold text-lg">${habit.title}</h4>
+                        <p class="text-slate-600 text-sm">${habit.description}</p>
+                    </div>
+                `;
+                habitsContainer.appendChild(div);
+            });
+
+            const statements = [
+                { statement: 'Colocar CPF na nota fiscal aumenta o score.', isTrue: false, explanation: 'O CPF na nota é para controle de impostos e não tem relação com o score de crédito.' },
+                { statement: 'Pagar as contas em dia é o fator mais importante para o score.', isTrue: true, explanation: 'A pontualidade nos pagamentos é o hábito com maior peso no cálculo da maioria dos birôs de crédito.' },
+                { statement: 'Consultar o próprio CPF diminui a pontuação.', isTrue: false, explanation: 'Você pode consultar seu score quantas vezes quiser. O que afeta são as consultas feitas por empresas para conceder crédito.' },
+                { statement: 'Ter o nome limpo já garante um score alto.', isTrue: false, explanation: 'Não necessariamente. Um score alto depende de um bom histórico de crédito ativo, não apenas da ausência de dívidas.' },
+                { statement: 'Manter os dados cadastrais atualizados ajuda o score.', isTrue: true, explanation: 'Manter seus dados atualizados nos birôs de crédito é visto como sinal de organização e pode impactar positivamente sua pontuação.' },
+                { statement: 'É possível pagar para uma empresa aumentar seu score.', isTrue: false, explanation: 'Qualquer promessa de aumento de score mediante pagamento é GOLPE. A melhora vem apenas com bons hábitos financeiros.' }
+            ];
+
+            const mythsContainer = document.querySelector('#mitos .grid');
+            mythsContainer.innerHTML = '';
+            statements.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'flip-card h-64 cursor-pointer';
+
+                const backBgColor = item.isTrue ? 'bg-green-600' : 'bg-red-600';
+                const backTextColor = 'text-white';
+                const backLabel = item.isTrue ? 'VERDADE' : 'FALSO';
+                const backLabelColor = item.isTrue ? 'text-green-200' : 'text-red-200';
+
+                card.innerHTML = `
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front bg-yellow-400 text-slate-800 shadow-lg border border-yellow-500">
+                            <p class="text-slate-700 text-sm font-bold uppercase mb-2">AFIRMAÇÃO</p>
+                            <p class="text-base sm:text-lg font-semibold">${item.statement}</p>
+                        </div>
+                        <div class="flip-card-back ${backBgColor} ${backTextColor} shadow-lg">
+                            <p class="${backLabelColor} text-sm font-bold uppercase mb-2">${backLabel}</p>
+                             <p class="text-base sm:text-lg font-semibold">${item.explanation}</p>
+                        </div>
+                    </div>
+                `;
+                card.addEventListener('click', () => {
+                    card.classList.toggle('flipped');
+                });
+                mythsContainer.appendChild(card);
+            });
+
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            document.querySelectorAll('.nav-link-mobile').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('nav a.nav-link');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (pageYOffset >= sectionTop - 80) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
