@@ -31,7 +31,7 @@
         #header {
             transition: background-color 0.4s ease-out, box-shadow 0.4s ease-out;
         }
-        /* Estilos para o Modal de Doutrinas */
+        /* Estilos para o Modal */
         #modal-overlay {
             transition: opacity 0.3s ease-in-out;
         }
@@ -69,6 +69,7 @@
             <div class="flex items-center space-x-6">
                 <nav class="hidden md:flex space-x-8 items-center">
                     <a href="#sobre" class="text-white hover:text-q-yellow transition duration-300">Sobre</a>
+                    <a href="#pastores" class="text-white hover:text-q-yellow transition duration-300">Nossos Pastores</a>
                     <a href="#cultos" class="text-white hover:text-q-yellow transition duration-300">Cultos</a>
                     <a href="#ministerios" class="text-white hover:text-q-yellow transition duration-300">Ministérios</a>
                     <a href="#contato" class="text-white hover:text-q-yellow transition duration-300">Contato</a>
@@ -90,6 +91,7 @@
 
         <div id="mobile-menu" class="hidden md:hidden bg-gray-800 bg-opacity-95">
             <a href="#sobre" class="block py-3 px-6 text-white text-center hover:bg-q-purple">Sobre</a>
+            <a href="#pastores" class="block py-3 px-6 text-white text-center hover:bg-q-purple">Nossos Pastores</a>
             <a href="#cultos" class="block py-3 px-6 text-white text-center hover:bg-q-purple">Cultos</a>
             <a href="#ministerios" class="block py-3 px-6 text-white text-center hover:bg-q-purple">Ministérios</a>
             <a href="#contato" class="block py-3 px-6 text-white text-center hover:bg-q-purple">Contato</a>
@@ -143,6 +145,26 @@
             </div>
         </section>
 
+        <section id="pastores" class="bg-gray-100 py-20 px-4">
+            <div class="container mx-auto text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-q-purple mb-12" data-aos="fade-down">Nossos Pastores</h2>
+                <div class="flex justify-center">
+                    <div class="interactive-card text-center cursor-pointer group max-w-md" 
+                         data-aos="fade-up" 
+                         data-title="Nossa Trajetória" 
+                         data-icon="fas fa-book-open"
+                         data-color="q-purple"
+                         data-description="Iniciando seu ministério juntos na cidade de Igarassu, o Pr. Adelson e a Pra. Taciane lideram a igreja com dedicação e amor. O Pr. Adelson recebeu seu chamado aos 13 anos, fez o ITQ aos 15 e assumiu sua primeira obra aos 19. Já pastoreou em diversos bairros de Recife e Igarassu, abrindo novas congregações. É bacharel em Teologia pela FATIN e atualmente cursa Direito pela UNINASSAU. A Pra. Taciane aceitou a Jesus aos 7 anos. Formada em Biomedicina, Medicina e no ITQ, ela lidera com excelência os Grupos Missionários de Mulheres e de Crianças.">
+                        
+                        <img src="assets/pastores-casal.jpg" alt="Foto dos Pastores Adelson e Taciane" class="w-64 h-64 md:w-72 md:h-72 rounded-full mx-auto shadow-xl border-4 border-white transform group-hover:scale-105 transition-transform duration-300 object-cover">
+                        <h3 class="text-3xl font-bold mt-6 mb-1 text-gray-800">Pr. Adelson & Pra. Taciane</h3>
+                        <p class="text-gray-600 font-medium">Pastores Titulares</p>
+                        <p class="text-sm text-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-2">Clique para ver nossa trajetória</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="cultos" class="bg-white py-20 px-4">
             <div class="container mx-auto text-center">
                 <h2 class="text-3xl md:text-4xl font-bold text-q-purple mb-12" data-aos="fade-down">Nossos Dias de Culto</h2>
@@ -171,88 +193,46 @@
                 <h2 class="text-3xl md:text-4xl font-bold text-q-purple mb-12" data-aos="fade-down">Nossos Ministérios</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
                     <div class="interactive-card bg-white shadow-lg rounded-xl p-6 text-center transform hover:scale-105 transition-transform duration-300 flex flex-col items-center justify-start cursor-pointer" data-aos="fade-up" data-title="Acessibilidade" data-description="Promovendo inclusão e acesso para todos, para que ninguém seja impedido de ouvir a Palavra de Deus." data-color="q-purple" data-icon="fas fa-universal-access">
-                        <div class="w-24 h-24 mb-4 flex items-center justify-center">
-                            <img src="assets/acessibilidade.png" alt="Logo do Ministério de Acessibilidade" class="max-w-full max-h-full object-contain">
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Acessibilidade</h3>
+                        <div class="w-24 h-24 mb-4 flex items-center justify-center"><img src="assets/acessibilidade.png" alt="Logo do Ministério de Acessibilidade" class="max-w-full max-h-full object-contain"></div><h3 class="text-xl font-bold mb-2">Acessibilidade</h3>
                     </div>
                     <div class="interactive-card bg-white shadow-lg rounded-xl p-6 text-center transform hover:scale-105 transition-transform duration-300 flex flex-col items-center justify-start cursor-pointer" data-aos="fade-up" data-aos-delay="50" data-title="Adolescentes" data-description="Um ambiente dinâmico e relevante para adolescentes crescerem na fé, fazerem amizades e descobrirem seu propósito em Cristo." data-color="q-purple" data-icon="fas fa-rocket">
-                        <div class="w-24 h-24 mb-4 flex items-center justify-center">
-                            <img src="assets/adolescentes.png" alt="Logo do Ministério de Adolescentes" class="max-w-full max-h-full object-contain">
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Adolescentes</h3>
+                        <div class="w-24 h-24 mb-4 flex items-center justify-center"><img src="assets/adolescentes.png" alt="Logo do Ministério de Adolescentes" class="max-w-full max-h-full object-contain"></div><h3 class="text-xl font-bold mb-2">Adolescentes</h3>
                     </div>
                     <div class="interactive-card bg-white shadow-lg rounded-xl p-6 text-center transform hover:scale-105 transition-transform duration-300 flex flex-col items-center justify-start cursor-pointer" data-aos="fade-up" data-aos-delay="100" data-title="Casais" data-description="Fortalecendo casamentos e famílias através de princípios bíblicos, comunhão e eventos edificantes." data-color="q-purple" data-icon="fas fa-heart">
-                        <div class="w-24 h-24 mb-4 flex items-center justify-center">
-                            <img src="assets/casais.png" alt="Logo do Ministério de Casais" class="max-w-full max-h-full object-contain">
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Casais</h3>
+                        <div class="w-24 h-24 mb-4 flex items-center justify-center"><img src="assets/casais.png" alt="Logo do Ministério de Casais" class="max-w-full max-h-full object-contain"></div><h3 class="text-xl font-bold mb-2">Casais</h3>
                     </div>
                     <div class="interactive-card bg-white shadow-lg rounded-xl p-6 text-center transform hover:scale-105 transition-transform duration-300 flex flex-col items-center justify-start cursor-pointer" data-aos="fade-up" data-aos-delay="150" data-title="Células" data-description="Nossa igreja nos lares. Grupos pequenos que se reúnem semanalmente para comunhão, estudo da Palavra e oração." data-color="q-purple" data-icon="fas fa-users">
-                        <div class="w-24 h-24 mb-4 flex items-center justify-center">
-                            <img src="assets/celulas.png" alt="Logo do Ministério de Células" class="max-w-full max-h-full object-contain">
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Células</h3>
+                        <div class="w-24 h-24 mb-4 flex items-center justify-center"><img src="assets/celulas.png" alt="Logo do Ministério de Células" class="max-w-full max-h-full object-contain"></div><h3 class="text-xl font-bold mb-2">Células</h3>
                     </div>
                     <div class="interactive-card bg-white shadow-lg rounded-xl p-6 text-center transform hover:scale-105 transition-transform duration-300 flex flex-col items-center justify-start cursor-pointer" data-aos="fade-up" data-aos-delay="200" data-title="COMMEQ" data-description="Responsável por toda a comunicação, mídia e transmissão da igreja, levando a mensagem do evangelho através da tecnologia." data-color="q-purple" data-icon="fas fa-video">
-                        <div class="w-24 h-24 mb-4 flex items-center justify-center">
-                            <img src="assets/commeq.png" alt="Logo do COMMEQ" class="max-w-full max-h-full object-contain">
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">COMMEQ</h3>
+                        <div class="w-24 h-24 mb-4 flex items-center justify-center"><img src="assets/commeq.png" alt="Logo do COMMEQ" class="max-w-full max-h-full object-contain"></div><h3 class="text-xl font-bold mb-2">COMMEQ</h3>
                     </div>
                     <div class="interactive-card bg-white shadow-lg rounded-xl p-6 text-center transform hover:scale-105 transition-transform duration-300 flex flex-col items-center justify-start cursor-pointer" data-aos="fade-up" data-aos-delay="250" data-title="Crianças e Juniores" data-description="Ensinando a Palavra de Deus de forma criativa e divertida, construindo uma base sólida de fé desde a infância." data-color="q-purple" data-icon="fas fa-child-reaching">
-                        <div class="w-24 h-24 mb-4 flex items-center justify-center">
-                            <img src="assets/gmc.png" alt="Logo do Ministério de Crianças e Juniores" class="max-w-full max-h-full object-contain">
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Crianças e Juniores</h3>
+                        <div class="w-24 h-24 mb-4 flex items-center justify-center"><img src="assets/gmc.png" alt="Logo do Ministério de Crianças e Juniores" class="max-w-full max-h-full object-contain"></div><h3 class="text-xl font-bold mb-2">Crianças e Juniores</h3>
                     </div>
                     <div class="interactive-card bg-white shadow-lg rounded-xl p-6 text-center transform hover:scale-105 transition-transform duration-300 flex flex-col items-center justify-start cursor-pointer" data-aos="fade-up" data-aos-delay="300" data-title="Diaconato" data-description="O corpo de servos da igreja, dedicados a manter a ordem, o cuidado com o templo e o bem-estar dos membros." data-color="q-purple" data-icon="fas fa-handshake-angle">
-                        <div class="w-24 h-24 mb-4 flex items-center justify-center">
-                            <img src="assets/diaconato.png" alt="Logo do Diaconato" class="max-w-full max-h-full object-contain">
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Diaconato</h3>
+                        <div class="w-24 h-24 mb-4 flex items-center justify-center"><img src="assets/diaconato.png" alt="Logo do Diaconato" class="max-w-full max-h-full object-contain"></div><h3 class="text-xl font-bold mb-2">Diaconato</h3>
                     </div>
                     <div class="interactive-card bg-white shadow-lg rounded-xl p-6 text-center transform hover:scale-105 transition-transform duration-300 flex flex-col items-center justify-start cursor-pointer" data-aos="fade-up" data-aos-delay="350" data-title="Esquadrão" data-description="Um grupo de evangelismo de impacto, focado em levar as boas novas de forma ousada e criativa para a nossa comunidade." data-color="q-purple" data-icon="fas fa-shield-halved">
-                        <div class="w-24 h-24 mb-4 flex items-center justify-center">
-                            <img src="assets/esquadrao.png" alt="Logo do Esquadrão" class="max-w-full max-h-full object-contain">
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Esquadrão</h3>
+                        <div class="w-24 h-24 mb-4 flex items-center justify-center"><img src="assets/esquadrao.png" alt="Logo do Esquadrão" class="max-w-full max-h-full object-contain"></div><h3 class="text-xl font-bold mb-2">Esquadrão</h3>
                     </div>
                     <div class="interactive-card bg-white shadow-lg rounded-xl p-6 text-center transform hover:scale-105 transition-transform duration-300 flex flex-col items-center justify-start cursor-pointer" data-aos="fade-up" data-aos-delay="400" data-title="Filho de Pastores" data-description="Um ministério de apoio, comunhão e fortalecimento para os filhos de ministros, entendendo seus desafios e vitórias únicos." data-color="q-purple" data-icon="fas fa-people-roof">
-                        <div class="w-24 h-24 mb-4 flex items-center justify-center">
-                            <img src="assets/filhodepastores.png" alt="Logo do Ministério de Filhos de Pastores" class="max-w-full max-h-full object-contain">
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Filho de Pastores</h3>
+                        <div class="w-24 h-24 mb-4 flex items-center justify-center"><img src="assets/filhodepastores.png" alt="Logo do Ministério de Filhos de Pastores" class="max-w-full max-h-full object-contain"></div><h3 class="text-xl font-bold mb-2">Filho de Pastores</h3>
                     </div>
                     <div class="interactive-card bg-white shadow-lg rounded-xl p-6 text-center transform hover:scale-105 transition-transform duration-300 flex flex-col items-center justify-start cursor-pointer" data-aos="fade-up" data-aos-delay="450" data-title="Homens" data-description="Desafiando e equipando os homens para serem líderes em suas casas, na igreja e na sociedade, firmados no caráter de Cristo." data-color="q-purple" data-icon="fas fa-person">
-                        <div class="w-24 h-24 mb-4 flex items-center justify-center">
-                            <img src="assets/gmh.png" alt="Logo do Ministério de Homens" class="max-w-full max-h-full object-contain">
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Homens</h3>
+                        <div class="w-24 h-24 mb-4 flex items-center justify-center"><img src="assets/gmh.png" alt="Logo do Ministério de Homens" class="max-w-full max-h-full object-contain"></div><h3 class="text-xl font-bold mb-2">Homens</h3>
                     </div>
                     <div class="interactive-card bg-white shadow-lg rounded-xl p-6 text-center transform hover:scale-105 transition-transform duration-300 flex flex-col items-center justify-start cursor-pointer" data-aos="fade-up" data-aos-delay="500" data-title="Jovens" data-description="Conectando jovens com Deus e uns com os outros, através de louvor, palavra e eventos que marcam uma geração." data-color="q-purple" data-icon="fas fa-bolt">
-                        <div class="w-24 h-24 mb-4 flex items-center justify-center">
-                            <img src="assets/gmj.png" alt="Logo do Ministério de Jovens" class="max-w-full max-h-full object-contain">
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Jovens</h3>
+                        <div class="w-24 h-24 mb-4 flex items-center justify-center"><img src="assets/gmj.png" alt="Logo do Ministério de Jovens" class="max-w-full max-h-full object-contain"></div><h3 class="text-xl font-bold mb-2">Jovens</h3>
                     </div>
                     <div class="interactive-card bg-white shadow-lg rounded-xl p-6 text-center transform hover:scale-105 transition-transform duration-300 flex flex-col items-center justify-start cursor-pointer" data-aos="fade-up" data-aos-delay="550" data-title="Mulheres" data-description="Um espaço para mulheres crescerem em fé, amizade e serviço, sendo fortalecidas e equipadas para cumprir seu chamado." data-color="q-purple" data-icon="fas fa-person-dress">
-                        <div class="w-24 h-24 mb-4 flex items-center justify-center">
-                            <img src="assets/gmm.png" alt="Logo do Ministério de Mulheres" class="max-w-full max-h-full object-contain">
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Mulheres</h3>
+                        <div class="w-24 h-24 mb-4 flex items-center justify-center"><img src="assets/gmm.png" alt="Logo do Ministério de Mulheres" class="max-w-full max-h-full object-contain"></div><h3 class="text-xl font-bold mb-2">Mulheres</h3>
                     </div>
                     <div class="interactive-card bg-white shadow-lg rounded-xl p-6 text-center transform hover:scale-105 transition-transform duration-300 flex flex-col items-center justify-start cursor-pointer" data-aos="fade-up" data-aos-delay="600" data-title="Negócios" data-description="Conectando e capacitando empreendedores e profissionais do Reino para aplicarem princípios bíblicos em suas carreiras e negócios." data-color="q-purple" data-icon="fas fa-briefcase">
-                        <div class="w-24 h-24 mb-4 flex items-center justify-center">
-                            <img src="assets/negocios.png" alt="Logo do Ministério de Negócios" class="max-w-full max-h-full object-contain">
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Negócios</h3>
+                        <div class="w-24 h-24 mb-4 flex items-center justify-center"><img src="assets/negocios.png" alt="Logo do Ministério de Negócios" class="max-w-full max-h-full object-contain"></div><h3 class="text-xl font-bold mb-2">Negócios</h3>
                     </div>
-                     <div class="interactive-card bg-white shadow-lg rounded-xl p-6 text-center transform hover:scale-105 transition-transform duration-300 flex flex-col items-center justify-start cursor-pointer" data-aos="fade-up" data-aos-delay="650" data-title="UNIORA" data-description="O ministério de intercessão da igreja, sustentando todos os trabalhos através da oração contínua e fervorosa." data-color="q-purple" data-icon="fas fa-hands-praying">
-                        <div class="w-24 h-24 mb-4 flex items-center justify-center">
-                            <img src="assets/uniora.png" alt="Logo do UNIORA" class="max-w-full max-h-full object-contain">
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">UNIORA</h3>
+                    <div class="interactive-card bg-white shadow-lg rounded-xl p-6 text-center transform hover:scale-105 transition-transform duration-300 flex flex-col items-center justify-start cursor-pointer" data-aos="fade-up" data-aos-delay="650" data-title="UNIORA" data-description="O ministério de intercessão da igreja, sustentando todos os trabalhos através da oração contínua e fervorosa." data-color="q-purple" data-icon="fas fa-hands-praying">
+                        <div class="w-24 h-24 mb-4 flex items-center justify-center"><img src="assets/uniora.png" alt="Logo do UNIORA" class="max-w-full max-h-full object-contain"></div><h3 class="text-xl font-bold mb-2">UNIORA</h3>
                     </div>
                 </div>
             </div>
@@ -304,8 +284,8 @@
     <script>
         // Inicializa a biblioteca de animação
         AOS.init({
-            duration: 800, // Duração da animação
-            once: true,    // Animar apenas uma vez
+            duration: 800,
+            once: true,
         });
 
         // Lógica para o menu mobile
@@ -335,7 +315,7 @@
         // Atualiza o ano no rodapé
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Lógica para o Modal Interativo (Doutrinas e Ministérios)
+        // Lógica para o Modal Interativo (Funciona para Doutrinas, Ministérios e Pastores)
         const interactiveCards = document.querySelectorAll('.interactive-card');
         const modalOverlay = document.getElementById('modal-overlay');
         const modalContent = document.getElementById('modal-content');
@@ -351,20 +331,17 @@
             const color = card.dataset.color;
             const iconClass = card.dataset.icon;
 
-            // Popula o modal com os dados do card
             modalTitle.textContent = title;
             modalDescription.textContent = description;
             
-            // Limpa classes antigas e adiciona as novas
             modalIcon.className = `${iconClass} text-3xl mr-4 text-${color}`;
             modalHeader.className = `p-6 flex justify-between items-center border-b-4 border-${color}`;
 
-            // Exibe o modal com animação
             modalOverlay.classList.remove('hidden');
             setTimeout(() => {
                 modalOverlay.classList.remove('opacity-0');
                 modalContent.classList.remove('opacity-0', 'scale-95');
-            }, 10); // Pequeno delay para a transição funcionar
+            }, 10);
         };
 
         const closeModal = () => {
@@ -372,7 +349,7 @@
             modalContent.classList.add('opacity-0', 'scale-95');
             setTimeout(() => {
                 modalOverlay.classList.add('hidden');
-            }, 300); // Espera a transição terminar
+            }, 300);
         };
 
         interactiveCards.forEach(card => {
@@ -386,9 +363,7 @@
             }
         });
 
-        // ==========================================================
-        // ✅ INÍCIO DA CORREÇÃO: Lógica para o Player da Web Rádio
-        // ==========================================================
+        // Lógica para o Player da Web Rádio
         const radioPlayer = document.getElementById('web-radio-player');
         const radioToggleButtons = document.querySelectorAll('#radio-toggle-button, #radio-toggle-button-mobile');
         
@@ -398,19 +373,13 @@
 
             if (isPlaying) {
                 radioPlayer.pause();
-                // Altera todos os ícones para 'play'
                 icons.forEach(icon => {
                     icon.classList.remove('fa-pause-circle');
                     icon.classList.add('fa-play-circle');
                 });
             } else {
-                radioPlayer.load(); // Garante que o stream carregue
-                radioPlayer.play().catch(error => {
-                    console.error("Erro ao tentar tocar a rádio:", error);
-                    // Opcional: Adicionar um alerta para o usuário
-                    // alert("Não foi possível iniciar a rádio. Verifique sua conexão ou tente mais tarde.");
-                });
-                // Altera todos os ícones para 'pause'
+                radioPlayer.load();
+                radioPlayer.play().catch(error => console.error("Erro ao tocar a rádio:", error));
                 icons.forEach(icon => {
                     icon.classList.remove('fa-play-circle');
                     icon.classList.add('fa-pause-circle');
@@ -418,13 +387,9 @@
             }
         };
 
-        // Adiciona o mesmo evento para ambos os botões
         radioToggleButtons.forEach(button => {
             button.addEventListener('click', toggleRadio);
         });
-        // ==========================================================
-        // ✅ FIM DA CORREÇÃO
-        // ==========================================================
 
     </script>
 
