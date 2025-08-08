@@ -25,7 +25,6 @@
         }
 
         .hero-gradient {
-            /* FOTO DE FUNDO ATUALIZADA */
             background: linear-gradient(135deg, rgba(244, 241, 238, 0.85), rgba(244, 241, 238, 0.6)), url('https://live.staticflickr.com/65535/54707055614_171be0f131_b.jpg');
             background-size: cover;
             background-position: center;
@@ -61,207 +60,295 @@
             transform: translateY(0px);
             opacity: 1;
         }
+
+        /* Discipleship styles */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        .content-fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body class="text-gray-800">
 
-    <!-- ======================= Header (Cabeçalho) ======================= -->
-    <header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
-        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="#" class="flex items-center">
-                <!-- NOVA LOGO APLICADA -->
-                <img src="https://live.staticflickr.com/65535/54706811111_e6bef91910_n.jpg" alt="Logo da IEQ Sítio" class="h-16 md:h-20 transition-transform hover:scale-110">
-            </a>
+    <!-- Container for the main site -->
+    <div id="main-site">
+        <!-- ======================= Header (Cabeçalho) ======================= -->
+        <header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+            <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+                <a href="#" class="flex items-center">
+                    <img src="https://live.staticflickr.com/65535/54706811111_e6bef91910_n.jpg" alt="Logo da IEQ Sítio" class="h-16 md:h-20 transition-transform hover:scale-110">
+                </a>
 
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="#sobre" class="text-gray-700 hover:text-red-600 font-medium transition-colors text-lg">Sobre</a>
-                <a href="#doutrina" class="text-gray-700 hover:text-red-600 font-medium transition-colors text-lg">Doutrina</a>
-                <a href="#horarios" class="text-gray-700 hover:text-red-600 font-medium transition-colors text-lg">Horários</a>
-                <a href="#contato" class="text-gray-700 hover:text-red-600 font-medium transition-colors text-lg">Contato</a>
-                <a href="https://www.instagram.com/quadrangularsitio/" target="_blank" class="bg-gradient-to-r from-pink-500 to-orange-400 text-white px-5 py-2 rounded-full hover:shadow-lg hover:scale-105 transition-all font-semibold">
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#sobre" class="text-gray-700 hover:text-red-600 font-medium transition-colors text-lg">Sobre</a>
+                    <a href="#doutrina" class="text-gray-700 hover:text-red-600 font-medium transition-colors text-lg">Doutrina</a>
+                    <a href="#horarios" class="text-gray-700 hover:text-red-600 font-medium transition-colors text-lg">Horários</a>
+                    <a href="#escola-fe" class="text-gray-700 hover:text-red-600 font-medium transition-colors text-lg">Escola da Fé</a>
+                    <a href="#contato" class="text-gray-700 hover:text-red-600 font-medium transition-colors text-lg">Contato</a>
+                    <a href="https://www.instagram.com/quadrangularsitio/" target="_blank" class="bg-gradient-to-r from-pink-500 to-orange-400 text-white px-5 py-2 rounded-full hover:shadow-lg hover:scale-105 transition-all font-semibold">
+                        <i class="fab fa-instagram mr-2"></i>Instagram
+                    </a>
+                </div>
+
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
+                        <i class="fas fa-bars fa-2x"></i>
+                    </button>
+                </div>
+            </nav>
+
+            <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+                <a href="#sobre" class="block px-6 py-4 text-gray-700 hover:bg-gray-100 font-medium">Sobre Nós</a>
+                <a href="#doutrina" class="block px-6 py-4 text-gray-700 hover:bg-gray-100 font-medium">Nossa Doutrina</a>
+                <a href="#horarios" class="block px-6 py-4 text-gray-700 hover:bg-gray-100 font-medium">Horários</a>
+                <a href="#escola-fe" class="block px-6 py-4 text-gray-700 hover:bg-gray-100 font-medium">Escola da Fé</a>
+                <a href="#contato" class="block px-6 py-4 text-gray-700 hover:bg-gray-100 font-medium">Contato</a>
+                <a href="https://www.instagram.com/quadrangularsitio/" target="_blank" class="block px-6 py-4 text-pink-600 hover:bg-gray-100 font-medium">
                     <i class="fab fa-instagram mr-2"></i>Instagram
                 </a>
             </div>
+        </header>
 
-            <div class="md:hidden">
-                <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
-                    <i class="fas fa-bars fa-2x"></i>
-                </button>
-            </div>
-        </nav>
+        <!-- ======================= Main Content ======================= -->
+        <main>
+            <!-- Hero Section -->
+            <section class="hero-gradient pt-28 pb-32 md:pt-40 md:pb-48">
+                <div class="container mx-auto px-6 text-center">
+                    <h1 class="text-5xl md:text-7xl font-extrabold text-gray-900 mb-6 leading-tight">Bem-vindo à IEQ Sítio dos Pintos</h1>
+                    <p class="text-xl md:text-2xl text-gray-800 mb-12 max-w-4xl mx-auto">Um lugar de fé, esperança e amor. Venha nos visitar e fazer parte da nossa família.</p>
+                    <a href="#horarios" class="bg-red-600 text-white px-10 py-4 rounded-full text-xl font-bold hover:bg-red-700 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl">
+                        Participe de um Culto
+                    </a>
+                </div>
+            </section>
 
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
-            <a href="#sobre" class="block px-6 py-4 text-gray-700 hover:bg-gray-100 font-medium">Sobre Nós</a>
-            <a href="#doutrina" class="block px-6 py-4 text-gray-700 hover:bg-gray-100 font-medium">Nossa Doutrina</a>
-            <a href="#horarios" class="block px-6 py-4 text-gray-700 hover:bg-gray-100 font-medium">Horários</a>
-            <a href="#contato" class="block px-6 py-4 text-gray-700 hover:bg-gray-100 font-medium">Contato</a>
-            <a href="https://www.instagram.com/quadrangularsitio/" target="_blank" class="block px-6 py-4 text-pink-600 hover:bg-gray-100 font-medium">
-                <i class="fab fa-instagram mr-2"></i>Instagram
-            </a>
-        </div>
-    </header>
-
-    <!-- ======================= Main Content ======================= -->
-    <main>
-
-        <!-- Hero Section -->
-        <section class="hero-gradient pt-28 pb-32 md:pt-40 md:pb-48">
-            <div class="container mx-auto px-6 text-center">
-                <h1 class="text-5xl md:text-7xl font-extrabold text-gray-900 mb-6 leading-tight">Bem-vindo à IEQ Sítio dos Pintos</h1>
-                <p class="text-xl md:text-2xl text-gray-800 mb-12 max-w-4xl mx-auto">Um lugar de fé, esperança e amor. Venha nos visitar e fazer parte da nossa família.</p>
-                <a href="#horarios" class="bg-red-600 text-white px-10 py-4 rounded-full text-xl font-bold hover:bg-red-700 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl">
-                    Participe de um Culto
-                </a>
-            </div>
-        </section>
-
-        <!-- Sobre Nós Section -->
-        <section id="sobre" class="py-24 md:py-32 reveal">
-            <div class="container mx-auto px-6">
-                <h2 class="section-title">Sobre Nossa Igreja</h2>
-                <p class="section-subtitle">Conheça um pouco da nossa história e da nossa missão.</p>
-                <div class="flex flex-col lg:flex-row items-center gap-16">
-                    <div class="lg:w-1/2">
-                        <!-- NOVA FOTO DA COMUNIDADE APLICADA -->
-                        <img src="https://live.staticflickr.com/65535/54707055614_171be0f131_b.jpg" alt="Comunidade da igreja" class="rounded-2xl shadow-2xl w-full transform hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="lg:w-1/2 text-lg text-gray-700 space-y-6 text-justify leading-relaxed">
-                        <p>A Igreja do Evangelho Quadrangular em Sítio dos Pintos é uma comunidade vibrante e acolhedora, dedicada a espalhar a mensagem do evangelho de Jesus Cristo. Nossa missão é servir a Deus e à nossa comunidade com amor, compaixão e dedicação.</p>
-                        <p>Liderados pelos nossos pastores, buscamos ser um farol de esperança e um ponto de apoio para todos que nos procuram. Cremos em um Deus que salva, cura, batiza com o Espírito Santo e que em breve voltará.</p>
-                        <p>Nossas portas estão sempre abertas. Sinta-se em casa para adorar a Deus conosco e crescer na fé.</p>
+            <!-- Sobre Nós Section -->
+            <section id="sobre" class="py-24 md:py-32 reveal">
+                <div class="container mx-auto px-6">
+                    <h2 class="section-title">Sobre Nossa Igreja</h2>
+                    <p class="section-subtitle">Conheça um pouco da nossa história e da nossa missão.</p>
+                    <div class="flex flex-col lg:flex-row items-center gap-16">
+                        <div class="lg:w-1/2">
+                            <img src="https://live.staticflickr.com/65535/54707055614_171be0f131_b.jpg" alt="Comunidade da igreja" class="rounded-2xl shadow-2xl w-full transform hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="lg:w-1/2 text-lg text-gray-700 space-y-6 text-justify leading-relaxed">
+                            <p>A Igreja do Evangelho Quadrangular em Sítio dos Pintos é uma comunidade vibrante e acolhedora, dedicada a espalhar a mensagem do evangelho de Jesus Cristo. Nossa missão é servir a Deus e à nossa comunidade com amor, compaixão e dedicação.</p>
+                            <p>Liderados pelos nossos pastores, buscamos ser um farol de esperança e um ponto de apoio para todos que nos procuram. Cremos em um Deus que salva, cura, batiza com o Espírito Santo e que em breve voltará.</p>
+                            <p>Nossas portas estão sempre abertas. Sinta-se em casa para adorar a Deus conosco e crescer na fé.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Doutrina Section -->
-        <section id="doutrina" class="py-24 md:py-32 section-bg-alt reveal">
-            <div class="container mx-auto px-6">
-                <h2 class="section-title">A Doutrina Quadrangular</h2>
-                <p class="section-subtitle">Nossa fé é fundamentada em quatro pilares essenciais do ministério de Jesus Cristo.</p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="doctrine-card">
-                        <i class="fas fa-cross doctrine-icon" style="color: #d9534f;"></i>
-                        <h3 class="text-3xl font-bold mb-4 text-gray-800">Jesus Salvador</h3>
-                        <p class="text-gray-600 text-lg leading-relaxed">Cremos que Jesus Cristo morreu na cruz para nos salvar, oferecendo perdão e vida eterna a todos que creem. (João 3:16)</p>
-                    </div>
-                    <div class="doctrine-card">
-                        <i class="fas fa-dove doctrine-icon" style="color: #f0ad4e;"></i>
-                        <h3 class="text-3xl font-bold mb-4 text-gray-800">Jesus Batizador</h3>
-                        <p class="text-gray-600 text-lg leading-relaxed">Cremos no batismo com o Espírito Santo que nos capacita para servir a Deus com poder e ousadia. (Atos 1:8)</p>
-                    </div>
-                    <div class="doctrine-card">
-                        <i class="fas fa-hand-holding-medical doctrine-icon" style="color: #5bc0de;"></i>
-                        <h3 class="text-3xl font-bold mb-4 text-gray-800">Jesus Médico</h3>
-                        <p class="text-gray-600 text-lg leading-relaxed">Cremos que Jesus tem o poder de curar nossos corpos, almas e espíritos, trazendo restauração completa. (Isaías 53:5)</p>
-                    </div>
-                    <div class="doctrine-card">
-                        <i class="fas fa-crown doctrine-icon" style="color: #8A2BE2;"></i>
-                        <h3 class="text-3xl font-bold mb-4 text-gray-800">Jesus Rei</h3>
-                        <p class="text-gray-600 text-lg leading-relaxed">Cremos na segunda vinda de Jesus, quando Ele retornará em glória para buscar a Sua Igreja. (1 Tessalonicenses 4:16-17)</p>
+            <!-- Doutrina Section -->
+            <section id="doutrina" class="py-24 md:py-32 section-bg-alt reveal">
+                <div class="container mx-auto px-6">
+                    <h2 class="section-title">A Doutrina Quadrangular</h2>
+                    <p class="section-subtitle">Nossa fé é fundamentada em quatro pilares essenciais do ministério de Jesus Cristo.</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <div class="doctrine-card">
+                            <i class="fas fa-cross doctrine-icon" style="color: #d9534f;"></i>
+                            <h3 class="text-3xl font-bold mb-4 text-gray-800">Jesus Salvador</h3>
+                            <p class="text-gray-600 text-lg leading-relaxed">Cremos que Jesus Cristo morreu na cruz para nos salvar, oferecendo perdão e vida eterna a todos que creem. (João 3:16)</p>
+                        </div>
+                        <div class="doctrine-card">
+                            <i class="fas fa-dove doctrine-icon" style="color: #f0ad4e;"></i>
+                            <h3 class="text-3xl font-bold mb-4 text-gray-800">Jesus Batizador</h3>
+                            <p class="text-gray-600 text-lg leading-relaxed">Cremos no batismo com o Espírito Santo que nos capacita para servir a Deus com poder e ousadia. (Atos 1:8)</p>
+                        </div>
+                        <div class="doctrine-card">
+                            <i class="fas fa-hand-holding-medical doctrine-icon" style="color: #5bc0de;"></i>
+                            <h3 class="text-3xl font-bold mb-4 text-gray-800">Jesus Médico</h3>
+                            <p class="text-gray-600 text-lg leading-relaxed">Cremos que Jesus tem o poder de curar nossos corpos, almas e espíritos, trazendo restauração completa. (Isaías 53:5)</p>
+                        </div>
+                        <div class="doctrine-card">
+                            <i class="fas fa-crown doctrine-icon" style="color: #8A2BE2;"></i>
+                            <h3 class="text-3xl font-bold mb-4 text-gray-800">Jesus Rei</h3>
+                            <p class="text-gray-600 text-lg leading-relaxed">Cremos na segunda vinda de Jesus, quando Ele retornará em glória para buscar a Sua Igreja. (1 Tessalonicenses 4:16-17)</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Horários Section -->
-        <section id="horarios" class="py-24 md:py-32 reveal">
-            <div class="container mx-auto px-6">
-                <h2 class="section-title">Programação da Semana</h2>
-                <p class="section-subtitle">Junte-se a nós em nossos cultos e reuniões. Você é nosso convidado especial!</p>
-                <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden">
-                    <ul class="divide-y divide-gray-200">
-                        <li class="p-8 flex flex-col sm:flex-row justify-between items-center hover:bg-red-50 transition-colors duration-300">
-                            <div>
-                                <p class="text-2xl font-bold text-red-600">Culto da Palavra</p>
-                                <p class="text-gray-600 text-lg mt-1">Um tempo para aprofundar-se nas Escrituras.</p>
-                            </div>
-                            <p class="text-xl font-semibold text-gray-800 mt-4 sm:mt-0">Quarta-feira, 19:30h</p>
-                        </li>
-                        <li class="p-8 flex flex-col sm:flex-row justify-between items-center hover:bg-blue-50 transition-colors duration-300">
-                            <div>
-                                <p class="text-2xl font-bold text-blue-600">Sexta de Milagres</p>
-                                <p class="text-gray-600 text-lg mt-1">Uma noite de fé, clamor e manifestação do poder de Deus.</p>
-                            </div>
-                            <p class="text-xl font-semibold text-gray-800 mt-4 sm:mt-0">Sexta-feira, 19:30h</p>
-                        </li>
-                        <li class="p-8 flex flex-col sm:flex-row justify-between items-center hover:bg-yellow-50 transition-colors duration-300">
-                            <div>
-                                <p class="text-2xl font-bold text-yellow-600">Culto Extraordinário</p>
-                                <p class="text-gray-600 text-lg mt-1">Uma celebração especial de louvor e adoração.</p>
-                            </div>
-                            <p class="text-xl font-semibold text-gray-800 mt-4 sm:mt-0">Domingo, 18:30h</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contato e Localização Section -->
-        <section id="contato" class="py-24 md:py-32 section-bg-alt reveal">
-            <div class="container mx-auto px-6">
-                <h2 class="section-title">Visite-nos</h2>
-                <p class="section-subtitle">Será uma alegria receber você e sua família em nossa casa.</p>
-                <div class="flex flex-col lg:flex-row gap-10 items-center">
-                    <div class="lg:w-1/2 w-full h-96 md:h-[500px] rounded-2xl shadow-2xl overflow-hidden transform hover:scale-105 transition-transform duration-500">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3950.65593848684!2d-34.95852468522027!3d-8.03433899421458!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7ab19c01157a4e7%3A0x80c5f21a2046896b!2sEstr.%20dos%20Pintos%2C%2054%20-%20Dois%20Irm%C3%A3os%2C%20Recife%20-%20PE%2C%2052171-110!5e0!3m2!1spt-BR!2sbr!4v1672859000000!5m2!1spt-BR!2sbr"
-                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                        </iframe>
+            <!-- Horários Section -->
+            <section id="horarios" class="py-24 md:py-32 reveal">
+                <div class="container mx-auto px-6">
+                    <h2 class="section-title">Programação da Semana</h2>
+                    <p class="section-subtitle">Junte-se a nós em nossos cultos e reuniões. Você é nosso convidado especial!</p>
+                    <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden">
+                        <ul class="divide-y divide-gray-200">
+                            <li class="p-8 flex flex-col sm:flex-row justify-between items-center hover:bg-red-50 transition-colors duration-300">
+                                <div>
+                                    <p class="text-2xl font-bold text-red-600">Culto da Palavra</p>
+                                    <p class="text-gray-600 text-lg mt-1">Um tempo para aprofundar-se nas Escrituras.</p>
+                                </div>
+                                <p class="text-xl font-semibold text-gray-800 mt-4 sm:mt-0">Quarta-feira, 19:30h</p>
+                            </li>
+                            <li class="p-8 flex flex-col sm:flex-row justify-between items-center hover:bg-blue-50 transition-colors duration-300">
+                                <div>
+                                    <p class="text-2xl font-bold text-blue-600">Sexta de Milagres</p>
+                                    <p class="text-gray-600 text-lg mt-1">Uma noite de fé, clamor e manifestação do poder de Deus.</p>
+                                </div>
+                                <p class="text-xl font-semibold text-gray-800 mt-4 sm:mt-0">Sexta-feira, 19:30h</p>
+                            </li>
+                            <li class="p-8 flex flex-col sm:flex-row justify-between items-center hover:bg-yellow-50 transition-colors duration-300">
+                                <div>
+                                    <p class="text-2xl font-bold text-yellow-600">Culto Extraordinário</p>
+                                    <p class="text-gray-600 text-lg mt-1">Uma celebração especial de louvor e adoração.</p>
+                                </div>
+                                <p class="text-xl font-semibold text-gray-800 mt-4 sm:mt-0">Domingo, 18:30h</p>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="lg:w-1/2 w-full">
-                        <div class="bg-white p-10 rounded-2xl shadow-2xl">
-                            <h3 class="text-4xl font-bold mb-8 text-gray-800">IEQ Sítio dos Pintos</h3>
-                            <div class="space-y-6">
-                                <p class="flex items-start text-lg">
-                                    <i class="fas fa-map-marker-alt w-6 text-blue-600 mt-1"></i>
-                                    <span class="ml-4">Estrada dos Pintos, 54 - Sítio dos Pintos, Recife - PE</span>
-                                </p>
-                                <p class="flex items-center text-lg">
-                                    <i class="fas fa-phone w-6 text-blue-600"></i>
-                                    <span class="ml-4">(81) 99872-1990</span>
-                                </p>
-                                <div class="pt-6">
-                                    <h4 class="font-bold text-xl mb-3 text-gray-800">Siga-nos no Instagram:</h4>
-                                    <a href="https://www.instagram.com/quadrangularsitio/" target="_blank" class="text-lg text-pink-600 hover:underline font-semibold">
-                                        @quadrangularsitio
-                                    </a>
+                </div>
+            </section>
+            
+            <!-- Escola da Fé Section -->
+            <section id="escola-fe" class="py-24 md:py-32 section-bg-alt reveal">
+                <div class="container mx-auto px-6 text-center">
+                    <h2 class="section-title">Escola da Fé</h2>
+                    <p class="section-subtitle">Invista no seu crescimento espiritual. Participe de nossos cursos e estudos bíblicos.</p>
+                    <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-2xl p-8 text-left">
+                        <h3 class="text-3xl font-bold text-gray-800 mb-4">Jornada para o Batismo</h3>
+                        <!-- COMO ADICIONAR SEU BANNER: Substitua o 'src' abaixo pelo link da imagem do seu banner. -->
+                        <img src="https://placehold.co/1200x600/f0ad4e/ffffff?text=Banner+do+Curso" alt="Banner do curso de discipulado" class="w-full h-auto rounded-xl mb-6">
+                        <p class="text-lg text-gray-700 mb-6">Um curso fundamental para todos que desejam firmar os primeiros passos na fé e se preparar para o batismo nas águas. Explore as doutrinas essenciais da vida cristã de forma clara e prática.</p>
+                        <button id="start-discipleship-btn" class="w-full bg-blue-600 text-white px-8 py-4 rounded-xl text-xl font-bold hover:bg-blue-700 transition-all transform hover:scale-105 shadow-lg">
+                            Iniciar Jornada
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contato e Localização Section -->
+            <section id="contato" class="py-24 md:py-32 reveal">
+                <div class="container mx-auto px-6">
+                    <h2 class="section-title">Visite-nos</h2>
+                    <p class="section-subtitle">Será uma alegria receber você e sua família em nossa casa.</p>
+                    <div class="flex flex-col lg:flex-row gap-10 items-center">
+                        <div class="lg:w-1/2 w-full h-96 md:h-[500px] rounded-2xl shadow-2xl overflow-hidden transform hover:scale-105 transition-transform duration-500">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3950.65593848684!2d-34.95852468522027!3d-8.03433899421458!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7ab19c01157a4e7%3A0x80c5f21a2046896b!2sEstr.%20dos%20Pintos%2C%2054%20-%20Dois%20Irm%C3%A3os%2C%20Recife%20-%20PE%2C%2052171-110!5e0!3m2!1spt-BR!2sbr!4v1672859000000!5m2!1spt-BR!2sbr"
+                                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                        <div class="lg:w-1/2 w-full">
+                            <div class="bg-white p-10 rounded-2xl shadow-2xl">
+                                <h3 class="text-4xl font-bold mb-8 text-gray-800">IEQ Sítio dos Pintos</h3>
+                                <div class="space-y-6">
+                                    <p class="flex items-start text-lg">
+                                        <i class="fas fa-map-marker-alt w-6 text-blue-600 mt-1"></i>
+                                        <span class="ml-4">Estrada dos Pintos, 54 - Sítio dos Pintos, Recife - PE</span>
+                                    </p>
+                                    <p class="flex items-center text-lg">
+                                        <i class="fas fa-phone w-6 text-blue-600"></i>
+                                        <span class="ml-4">(81) 99872-1990</span>
+                                    </p>
+                                    <div class="pt-6">
+                                        <h4 class="font-bold text-xl mb-3 text-gray-800">Siga-nos no Instagram:</h4>
+                                        <a href="https://www.instagram.com/quadrangularsitio/" target="_blank" class="text-lg text-pink-600 hover:underline font-semibold">
+                                            @quadrangularsitio
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-    </main>
+            </section>
+        </main>
 
-    <!-- ======================= Footer ======================= -->
-    <footer class="bg-gray-800 text-white py-12">
-        <div class="container mx-auto px-6 text-center">
-            <!-- NOVA LOGO APLICADA -->
-            <img src="https://live.staticflickr.com/65535/54706811111_e6bef91910_n.jpg" alt="Logo IEQ Sítio" class="h-24 mx-auto mb-5"/>
-            <p class="text-base text-gray-300">&copy; 2024 Igreja do Evangelho Quadrangular - Sítio dos Pintos.</p>
-            <p class="text-gray-400">Todos os direitos reservados.</p>
-            <p class="text-sm text-gray-500 mt-6">Desenvolvido com ❤️ para a comunidade.</p>
+        <!-- ======================= Footer ======================= -->
+        <footer class="bg-gray-800 text-white py-12">
+            <div class="container mx-auto px-6 text-center">
+                <img src="https://live.staticflickr.com/65535/54706811111_e6bef91910_n.jpg" alt="Logo IEQ Sítio" class="h-24 mx-auto mb-5"/>
+                <p class="text-base text-gray-300">&copy; 2024 Igreja do Evangelho Quadrangular - Sítio dos Pintos.</p>
+                <p class="text-gray-400">Todos os direitos reservados.</p>
+                <p class="text-sm text-gray-500 mt-6">Desenvolvido com ❤️ para a comunidade.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Container for the Discipleship Course (hidden by default) -->
+    <div id="discipleship-container" class="hidden">
+        <div class="flex flex-col md:flex-row min-h-screen bg-gray-100">
+            <!-- Sidebar/Menu -->
+            <aside class="w-full md:w-80 bg-white shadow-lg p-6 flex-shrink-0">
+                <div class="flex items-center justify-between gap-3 mb-6">
+                     <h1 class="text-xl font-bold text-gray-800">Jornada para o Batismo</h1>
+                     <button id="back-to-main-site-btn" class="text-sm text-red-600 hover:underline">Voltar ao Site</button>
+                </div>
+                <nav id="lesson-menu" class="space-y-2 custom-scrollbar overflow-y-auto" style="max-height: calc(100vh - 120px);"></nav>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="flex-1 p-4 sm:p-6 md:p-10">
+                <div id="content-area" class="bg-white rounded-2xl shadow-md p-6 sm:p-8 w-full max-w-4xl mx-auto min-h-[80vh] flex flex-col"></div>
+                <!-- Navigation Buttons -->
+                <div id="navigation-buttons" class="flex justify-between items-center mt-8 max-w-4xl mx-auto">
+                    <button id="prev-btn" class="flex items-center gap-2 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">
+                        <i class="fas fa-arrow-left"></i> Anterior
+                    </button>
+                    <span id="progress-indicator" class="text-sm font-medium text-gray-600"></span>
+                    <button id="next-btn" class="flex items-center gap-2 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">
+                        Próxima <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </main>
         </div>
-    </footer>
+    </div>
 
     <!-- ======================= JavaScript ======================= -->
     <script>
-        // Mobile menu toggle
+        // ================== Main Site Scripts ==================
+        const mainSiteContainer = document.getElementById('main-site');
+        const discipleshipContainer = document.getElementById('discipleship-container');
+        const startDiscipleshipBtn = document.getElementById('start-discipleship-btn');
+        const backToMainSiteBtn = document.getElementById('back-to-main-site-btn');
+
+        // --- Event Listeners to switch between Main Site and Discipleship ---
+        startDiscipleshipBtn.addEventListener('click', () => {
+            mainSiteContainer.classList.add('hidden');
+            discipleshipContainer.classList.remove('hidden');
+            window.scrollTo(0, 0); // Scroll to top
+        });
+
+        backToMainSiteBtn.addEventListener('click', () => {
+            discipleshipContainer.classList.add('hidden');
+            mainSiteContainer.classList.remove('hidden');
+            window.scrollTo(0, 0); // Scroll to top
+        });
+
+        // --- Mobile menu toggle ---
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
-        const mobileMenuLinks = mobileMenu.getElementsByTagName('a');
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
         for (let link of mobileMenuLinks) {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
             });
         }
 
-        // Scroll reveal animation
+        // --- Scroll reveal animation ---
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
@@ -276,9 +363,381 @@
             }
         }
         window.addEventListener("scroll", reveal);
-        // To reveal elements already in view on page load
-        reveal();
-    </script>
+        reveal(); // Initial check
 
+        // ================== Discipleship Course Scripts ==================
+        const lessons = [
+            {
+                title: "Carta de Boas-Vindas",
+                content: `
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">Carta de Boas-Vindas ao Novo Discípulo</h2>
+                    <p class="mb-4 text-lg">Paz seja convosco,</p>
+                    <p class="mb-4 text-lg">Seja muito bem-vindo(a). A decisão que você tomou de entregar sua vida a Jesus é a mais importante e maravilhosa que alguém pode fazer. O céu está em festa por você, e nós, sua nova família na fé, também celebramos com imensa alegria este novo começo.</p>
+                    <p class="mb-4 text-lg">Você deu início a uma jornada extraordinária, uma caminhada de descoberta, crescimento e transformação. A Bíblia diz que, em Cristo, você se tornou uma "nova criatura" [2 Coríntios 5:17]. As coisas velhas ficaram para trás e um futuro brilhante, cheio da presença e do propósito de Deus, se abre diante de você.</p>
+                    <p class="mb-4 text-lg">Esta apostila, "Uma Jornada para o Batismo", foi preparada com muito carinho para ser sua companheira nesta fase inicial. O nosso objetivo é caminhar ao seu lado, ajudando-o(a) a construir um alicerce sólido para a sua fé. O discipulado é um processo de paternidade espiritual, no qual você será cuidado, ensinado e amparado enquanto aprende os princípios fundamentais da vida com Deus.</p>
+                    <p class="mb-4 text-lg">Ao longo destas lições, vamos explorar juntos as verdades preciosas da Palavra de Deus, entender a profundidade do amor de Cristo e nos aprofundar nas doutrinas que formam a base da nossa fé na Igreja do Evangelho Quadrangular. Cada página é um convite para que você conheça mais a Deus, fortaleça seu relacionamento com Ele e se prepare para o próximo passo de obediência e alegria: o batismo nas águas.</p>
+                    <p class="mb-4 text-lg">Não tenha pressa. Medite em cada lição, leia as referências bíblicas com o coração aberto e responda às perguntas com sinceridade. Lembre-se: você não está sozinho(a). Estamos aqui para orar com você, tirar suas dúvidas e celebrar cada vitória em sua nova vida.</p>
+                    <p class="font-semibold text-lg">Com amor,<br>Dos seus Pastores,<br>Pr. Adelson Elias e Pra Taciane Leal</p>
+                `
+            },
+            {
+                title: "Lição 1: A Bíblia",
+                objective: "Estabelecer a Bíblia como a autoridade final, inspirada e infalível para a fé e a vida do crente e fornecer ferramentas práticas para a leitura e estudo pessoal.",
+                content: `
+                    <h3 class="text-2xl font-bold mb-3">A Autoridade das Escrituras</h3>
+                    <p class="mb-4">O primeiro e mais fundamental artigo da Declaração de Fé da Igreja do Evangelho Quadrangular afirma que a Bíblia Sagrada é a Palavra de Deus inspirada, verdadeira, imutável e inabalável. Nós cremos que ela é a revelação de Deus para a humanidade, escrita por homens que foram movidos e inspirados pelo Espírito Santo.</p>
+                    <p class="mb-4">A autoridade da Bíblia vem de seu Autor: o próprio Deus. Portanto, quando falamos da "autoridade da Bíblia", estamos, na verdade, falando da "autoridade de Deus exercida por meio da Bíblia". Isso transforma a nossa relação com as Escrituras. Não se trata de obedecer a um livro, mas de ter o privilégio de ouvir a voz do nosso Rei e Criador falando conosco.</p>
+                    <blockquote class="border-l-4 border-red-500 pl-4 py-2 my-4 bg-red-50 text-gray-700">
+                        “Toda a Escritura é divinamente inspirada, e proveitosa para ensinar, para redarguir, para corrigir, para instruir em justiça; para que o homem de Deus seja perfeito, e perfeitamente instruído para toda a boa obra” (2 Timóteo 3:16-17).
+                    </blockquote>
+                    <h3 class="text-2xl font-bold mb-3 mt-6">A Bíblia Como Revelação de Deus</h3>
+                    <p class="mb-4">A Bíblia não é primariamente um livro de regras, mas a grande história da redenção de Deus. O personagem central dessa história é Jesus Cristo. O Antigo Testamento aponta para a Sua vinda, os Evangelhos registram Sua vida, morte e ressurreição, e o restante do Novo Testamento explica as implicações de Sua obra e aguarda a Sua volta.</p>
+                    <h3 class="text-2xl font-bold mb-3 mt-6">Como Ler a Bíblia</h3>
+                    <ul class="list-disc list-inside space-y-2 mb-4">
+                        <li><b>Ore antes de ler:</b> Peça ao Espírito Santo que ilumine sua mente.</li>
+                        <li><b>Leia com regularidade:</b> A consistência é mais importante do que a quantidade.</li>
+                        <li><b>Medite na Palavra:</b> Pense profundamente sobre o que você leu.</li>
+                        <li><b>Comece bem:</b> O Evangelho de João é um ótimo ponto de partida.</li>
+                    </ul>
+                `,
+                questions: [
+                    "Por que a Bíblia é chamada de 'Palavra de Deus'? O que isso significa para você pessoalmente?",
+                    "De acordo com 2 Timóteo 3:16-17, quais são os propósitos da Escritura na vida de um crente?",
+                    "Qual é o seu plano para começar a ler a Bíblia regularmente? Que horário do dia você pode separar para isso?",
+                    "Você já teve alguma experiência em que um versículo da Bíblia falou diretamente ao seu coração ou a uma situação que você estava vivendo?"
+                ]
+            },
+            {
+                title: "Lição 2: Arrependimento e Fé",
+                objective: "Compreender a condição humana diante de Deus e a resposta necessária de arrependimento e fé para receber a salvação.",
+                content: `
+                    <h3 class="text-2xl font-bold mb-3">A Origem do Problema: A Queda do Homem</h3>
+                    <p class="mb-4">A Declaração de Fé da Igreja do Evangelho Quadrangular ensina que o ser humano foi criado à imagem e semelhança de Deus, mas por um ato de desobediência voluntária, o pecado e a morte entraram no mundo. A natureza humana foi corrompida e a comunhão com Deus foi quebrada.</p>
+                    <blockquote class="border-l-4 border-red-500 pl-4 py-2 my-4 bg-red-50 text-gray-700">
+                        “Porque todos pecaram e destituídos estão da glória de Deus” (Romanos 3:23).
+                    </blockquote>
+                    <h3 class="text-2xl font-bold mb-3 mt-6">A Resposta Humana: Arrependimento e Fé</h3>
+                    <p class="mb-4">Embora a salvação seja um presente gratuito, ela precisa ser recebida. A nossa resposta a esse presente de Deus se dá de duas formas simultâneas:</p>
+                    <ul class="list-disc list-inside space-y-2 mb-4">
+                        <li><b>Arrependimento:</b> Uma "mudança de mente" que leva a uma "mudança de direção", afastando-se do pecado e voltando-se para Deus.</li>
+                        <li><b>Fé:</b> Confiança e entrega total em Jesus Cristo e em Sua obra na cruz como único e suficiente meio para a salvação.</li>
+                    </ul>
+                    <blockquote class="border-l-4 border-red-500 pl-4 py-2 my-4 bg-red-50 text-gray-700">
+                        “Se com a tua boca confessares ao Senhor Jesus, e em teu coração creres que Deus o ressuscitou dentre os mortos, serás salvo.” (Romanos 10:9).
+                    </blockquote>
+                `,
+                questions: [
+                    "Como a compreensão da 'Queda do Homem' ajuda você a entender a necessidade de um Salvador?",
+                    "O que significou para você se arrepender dos seus pecados e confessar Jesus como seu Senhor?",
+                    "Como você pode viver diariamente em gratidão pelo sacrifício de Jesus?",
+                    "Refletindo sobre sua vida, você pode identificar áreas onde o arrependimento (uma mudança de direção) já está acontecendo?"
+                ]
+            },
+            {
+                title: "Lição 3: Quem é Jesus Cristo?",
+                objective: "Conhecer a pessoa e a obra de Jesus Cristo como o Filho de Deus, nosso Salvador e Senhor, o pilar central da nossa fé.",
+                content: `
+                    <h3 class="text-2xl font-bold mb-3">Deus Filho, Jesus Cristo: Nosso Salvador e Senhor</h3>
+                    <p class="mb-4">Jesus Cristo é a Segunda Pessoa da Trindade. Ele é eternamente Deus, igual ao Pai. No entanto, em um momento específico da história, Ele se fez homem. Ele viveu uma vida perfeita, sem pecado, e se tornou a expressão visível do Deus invisível. Jesus disse: “Quem me vê a mim, vê o Pai” (João 14:9).</p>
+                    <p class="mb-4">O papel central de Jesus é ser nosso Salvador e Senhor. Ele é o único caminho para o Pai (João 14:6). Foi através de Sua morte na cruz e Sua ressurreição que fomos reconciliados com Deus.</p>
+                    <h3 class="text-2xl font-bold mb-3 mt-6">Jesus, o Salvador Perfeito (A Cruz)</h3>
+                    <p class="mb-4">Jesus Cristo, o Filho de Deus, veio ao mundo como o Salvador. Este é o primeiro e fundamental pilar do Evangelho Quadrangular. Sendo perfeito e sem pecado, Ele tomou o nosso lugar na cruz, levando sobre Si os nossos pecados e sofrendo a punição que merecíamos.</p>
+                    <blockquote class="border-l-4 border-red-500 pl-4 py-2 my-4 bg-red-50 text-gray-700">
+                        “Mas ele foi ferido por causa das nossas transgressões... o castigo que nos traz a paz estava sobre ele, e pelas suas pisaduras fomos sarados” (Isaías 53:5).
+                    </blockquote>
+                    <div class="mt-4 p-4 rounded-lg bg-red-100 border border-red-200">
+                        <p><b>Símbolo:</b> A Cruz, lugar do sacrifício.</p>
+                        <p><b>Cor:</b> Vermelho, representando o sangue de Cristo.</p>
+                        <p><b>Rosto:</b> Homem, pois Ele se tornou o Filho do Homem para morrer em nosso lugar.</p>
+                        <p><b>Evangelho:</b> Lucas, que apresenta Jesus como o Homem perfeito.</p>
+                    </div>
+                `,
+                questions: [
+                    "De que maneiras Jesus é o seu Salvador e Senhor?",
+                    "Medite em Isaías 53:5. O que significa para você que Jesus levou sobre si o 'castigo que nos traz a paz'?",
+                    "A cruz é o símbolo da salvação. O que a cruz representa em sua vida agora?",
+                    "Como a verdade de que Deus é seu Pai amoroso impacta a sua visão de si mesmo?"
+                ]
+            },
+            {
+                title: "Lição 4: Salvação",
+                objective: "Ajudar o novo crente a compreender e se firmar na segurança da sua salvação, entendendo que ela é um presente de Deus.",
+                content: `
+                    <h3 class="text-2xl font-bold mb-3">O Milagre do Novo Nascimento</h3>
+                    <p class="mb-4">Ao aceitar Jesus, você experimentou um milagre sobrenatural chamado "novo nascimento". O Espírito de Deus veio habitar em você, fazendo de você um filho de Deus.</p>
+                    <blockquote class="border-l-4 border-red-500 pl-4 py-2 my-4 bg-red-50 text-gray-700">
+                        “Assim que, se alguém está em Cristo, nova criatura é: as coisas velhas já passaram; eis que tudo se fez novo” (2 Coríntios 5:17).
+                    </blockquote>
+                    <h3 class="text-2xl font-bold mb-3 mt-6">Salvação: Um Presente da Graça</h3>
+                    <p class="mb-4">A salvação não pode ser conquistada por esforço próprio. É um presente, concedido unicamente pela graça de Deus (um favor que não merecemos).</p>
+                    <blockquote class="border-l-4 border-red-500 pl-4 py-2 my-4 bg-red-50 text-gray-700">
+                        “Porque pela graça sois salvos, por meio da fé; e isto não vem de vós, é dom de Deus. Não vem das obras, para que ninguém se glorie” (Efésios 2:8-9).
+                    </blockquote>
+                `,
+                questions: [
+                    "Em suas próprias palavras, o que significa ser uma 'nova criatura' em Cristo?",
+                    "Que mudanças você já começou a notar em seus desejos ou pensamentos desde que aceitou a Jesus?",
+                    "Por que é tão importante entender que a salvação é um presente e não algo que podemos conquistar? Como essa verdade lhe traz paz?",
+                    "O que significa para você dar um testemunho público da sua fé? Há algum temor ou alegria em relação a isso?"
+                ]
+            },
+            {
+                title: "Lição 5: O Espírito Santo",
+                objective: "Conhecer a pessoa do Espírito Santo e compreender a promessa do Batismo com o Espírito Santo.",
+                content: `
+                    <h3 class="text-2xl font-bold mb-3">Deus Espírito Santo: Nosso Consolador e Guia</h3>
+                    <p class="mb-4">O Espírito Santo é a Terceira Pessoa da Trindade. Ele é plenamente Deus. Após a ascensão de Jesus, o Espírito Santo foi enviado para ser a presença ativa de Deus no mundo e na vida dos crentes. No momento da sua conversão, Ele veio habitar permanentemente em você.</p>
+                    <p class="mb-4">O Espírito Santo é nosso Consolador, Ajudador, Guia e Mestre. Ele nos ajuda a entender a Bíblia, nos capacita a orar e nos dá poder para viver a vida cristã.</p>
+                    <h3 class="text-2xl font-bold mb-3 mt-6">Jesus, o Batizador com o Espírito Santo (A Pomba)</h3>
+                    <p class="mb-4">Após a salvação, Jesus nos oferece o Batismo com o Espírito Santo. Este é o segundo pilar da fé Quadrangular. É uma experiência subsequente à salvação, um revestimento de poder de Deus sobre o crente.</p>
+                    <blockquote class="border-l-4 border-yellow-500 pl-4 py-2 my-4 bg-yellow-50 text-gray-700">
+                        “Mas recebereis a virtude (poder) do Espírito Santo, que há de vir sobre vós; e ser-me-eis testemunhas...” (Atos 1:8).
+                    </blockquote>
+                    <div class="mt-4 p-4 rounded-lg bg-yellow-100 border border-yellow-200">
+                        <p><b>Símbolo:</b> A Pomba, lembrando o batismo de Jesus.</p>
+                        <p><b>Cor:</b> Amarelo-Ouro, simbolizando o fogo do Espírito.</p>
+                        <p><b>Rosto:</b> Leão, simbolizando força e poder.</p>
+                        <p><b>Evangelho:</b> João, que enfatiza a divindade de Jesus.</p>
+                    </div>
+                `,
+                questions: [
+                    "Você já sentiu a orientação ou o conforto do Espírito Santo em alguma situação?",
+                    "Qual a diferença entre 'ter' o Espírito Santo (que acontece na salvação) e ser 'batizado com' o Espírito Santo?",
+                    "Por que um crente precisa do poder do Espírito Santo em sua vida diária?",
+                    "Você está disposto a buscar essa experiência com um coração aberto e expectante?"
+                ]
+            },
+            {
+                title: "Lição 6: Oração",
+                objective: "Desmistificar a oração, ensinando-a como uma conversa íntima e constante com Deus.",
+                content: `
+                    <h3 class="text-2xl font-bold mb-3">O Que é Oração?</h3>
+                    <p class="mb-4">Oração é simplesmente conversar com Deus. É um diálogo, uma comunicação de mão dupla entre um Pai amoroso e Seu filho. Não é um ritual, mas um relacionamento. O Criador do universo convida você para um relacionamento íntimo e pessoal.</p>
+                    <h3 class="text-2xl font-bold mb-3 mt-6">Como Orar: O Modelo do "Pai Nosso"</h3>
+                    <p class="mb-4">Jesus nos deu um modelo em Mateus 6:9-13 que nos ensina a:</p>
+                    <ul class="list-disc list-inside space-y-2 mb-4">
+                        <li>Começar com <b>Adoração e Reverência</b> ("Pai nosso... santificado seja o teu nome").</li>
+                        <li>Submeter-se à <b>Vontade de Deus</b> ("Venha o teu reino, seja feita a tua vontade").</li>
+                        <li>Apresentar nossas <b>Necessidades</b> ("O pão nosso de cada dia nos dá hoje").</li>
+                        <li>Buscar e oferecer <b>Perdão</b> ("Perdoa-nos as nossas dívidas...").</li>
+                        <li>Pedir <b>Proteção e Livramento</b> ("E não nos deixes cair em tentação, mas livra-nos do mal").</li>
+                    </ul>
+                `,
+                questions: [
+                    "Qual era a sua ideia sobre oração antes desta lição? O que mudou?",
+                    "Jesus nos ensinou a chamar Deus de 'Pai'. Como isso muda a maneira como você se aproxima d'Ele em oração?",
+                    "Pense em uma necessidade específica em sua vida. Como você pode apresentá-la a Deus usando os princípios da oração que aprendeu?",
+                    "Por quem você pode começar a interceder (orar) hoje? Faça uma pequena lista."
+                ]
+            },
+            {
+                title: "Lição 7: A Igreja",
+                objective: "Ensinar a grande importância da igreja local como o ambiente projetado por Deus para o crescimento, encorajamento, serviço e proteção do crente.",
+                content: `
+                    <h3 class="text-2xl font-bold mb-3">O Que é a Igreja?</h3>
+                    <p class="mb-4">A Igreja não é um prédio, mas o Corpo de Cristo na Terra, um organismo vivo composto por todos os salvos. A igreja local é a expressão visível dessa família em sua cidade. Tentar viver a vida cristã isoladamente é como uma brasa longe do fogo: ela se apaga.</p>
+                    <blockquote class="border-l-4 border-red-500 pl-4 py-2 my-4 bg-red-50 text-gray-700">
+                        “Não deixando a nossa congregação, como é costume de alguns, antes admoestando-nos uns aos outros...” (Hebreus 10:25).
+                    </blockquote>
+                    <h3 class="text-2xl font-bold mb-3 mt-6">Integração na Vida da Igreja</h3>
+                    <p class="mb-4">A verdadeira integração vai além da membresia. Envolve integração espiritual, doutrinária, ministerial (conhecer a igreja) e social (construir relacionamentos).</p>
+                `,
+                questions: [
+                    "Como a imagem da igreja como uma 'família' ou um 'corpo' muda sua perspectiva sobre frequentar os cultos?",
+                    "De que maneiras você já se sentiu acolhido e encorajado pela sua igreja local?",
+                    "Por que é perigoso para um cristão tentar 'caminhar sozinho', sem a comunhão da igreja?",
+                    "Quais são os próximos passos que você pode dar para se integrar mais na vida da sua igreja (participar de um pequeno grupo, se voluntariar em um ministério, etc.)?"
+                ]
+            },
+            {
+                title: "Lição 8: Batismo nas Águas",
+                objective: "Explicar o significado do batismo, seus pré-requisitos e sua importância como um ato público de fé e obediência.",
+                content: `
+                    <h3 class="text-2xl font-bold mb-3">Um Mandamento de Jesus</h3>
+                    <p class="mb-4">O batismo nas águas não é uma opção, mas uma ordem direta de Jesus (Mateus 28:19-20). É um passo fundamental para todo novo discípulo e uma demonstração pública de amor e submissão a Cristo. O próprio Jesus nos deixou o exemplo.</p>
+                    <h3 class="text-2xl font-bold mb-3 mt-6">Um Símbolo Poderoso</h3>
+                    <p class="mb-4">O batismo por imersão (mergulho) é um drama visual que representa nossa união com Cristo em Sua morte, sepultamento e ressurreição.</p>
+                    <blockquote class="border-l-4 border-red-500 pl-4 py-2 my-4 bg-red-50 text-gray-700">
+                        “...fomos sepultados com ele pelo batismo na morte; para que, como Cristo foi ressuscitado... assim andemos nós também em novidade de vida” (Romanos 6:4).
+                    </blockquote>
+                    <ul class="list-disc list-inside space-y-2 mb-4">
+                        <li><b>Morte e Sepultamento:</b> Ao descer às águas, declaramos que nossa velha vida morreu com Cristo.</li>
+                        <li><b>Ressurreição para uma Nova Vida:</b> Ao sair das águas, declaramos que ressuscitamos com Cristo para uma vida nova.</li>
+                    </ul>
+                    <h3 class="text-2xl font-bold mb-3 mt-6">Pré-requisitos para o Batismo</h3>
+                    <p class="mb-4">O batismo é para aqueles que já experimentaram a salvação. Os pré-requisitos são:</p>
+                    <ul class="list-disc list-inside space-y-2 mb-4">
+                        <li><b>Crer (Fé):</b> Fé pessoal em Jesus Cristo como Salvador (Marcos 16:16).</li>
+                        <li><b>Arrepender-se:</b> Afastar-se do pecado e voltar-se para Deus (Atos 2:38).</li>
+                    </ul>
+                `,
+                questions: [
+                    "Por que o batismo é um passo de obediência a Jesus?",
+                    "Explique com suas palavras o que o ato de entrar e sair da água simboliza.",
+                    "Você pode afirmar com confiança, como o eunuco em Atos 8:37: 'Creio que Jesus Cristo é o Filho de Deus'?",
+                    "Como você pode se preparar em oração para o dia do seu batismo?"
+                ]
+            },
+            {
+                title: "Lição 9: A Ceia do Senhor",
+                objective: "Explicar o significado da Ceia do Senhor como uma ordenança contínua de memória, comunhão e proclamação.",
+                content: `
+                    <h3 class="text-2xl font-bold mb-3">A Segunda Ordenança</h3>
+                    <p class="mb-4">Assim como o Batismo, a Ceia do Senhor é uma ordenança deixada por Jesus. É um memorial rico em significado, usando dois elementos:</p>
+                    <ul class="list-disc list-inside space-y-2 mb-4">
+                        <li><b>O Pão:</b> Simboliza o corpo de Cristo, quebrado por nós.</li>
+                        <li><b>O Cálice:</b> Simboliza o sangue de Cristo, derramado para o perdão dos pecados.</li>
+                    </ul>
+                    <h3 class="text-2xl font-bold mb-3 mt-6">Um Ato com Triplo Propósito</h3>
+                    <ul class="list-disc list-inside space-y-2 mb-4">
+                        <li><b>Memória:</b> Olhar para trás e lembrar do sacrifício na cruz.</li>
+                        <li><b>Comunhão:</b> Ter comunhão com Cristo e com a igreja.</li>
+                        <li><b>Proclamação:</b> Anunciar a morte do Senhor e nossa esperança em Sua volta.</li>
+                    </ul>
+                `,
+                questions: [
+                    "Qual é o significado do pão e do cálice na Ceia do Senhor?",
+                    "A Ceia é um momento de autoexame. O que significa 'participar dignamente'?",
+                    "Como a Ceia do Senhor fortalece sua fé e sua conexão com a igreja?",
+                    "De que forma a Ceia aponta tanto para o sacrifício passado de Cristo quanto para a Sua futura volta?"
+                ]
+            },
+            {
+                title: "Lição 10: Doutrinas da Fé",
+                objective: "Apresentar os quatro pilares da fé Quadrangular, demonstrando como a obra de Jesus Cristo é completa.",
+                content: `
+                    <p class="mb-4">O termo "Quadrangular" refere-se às quatro doutrinas centrais que proclamam a totalidade do ministério de Jesus. É um Evangelho completo para a pessoa completa.</p>
+                    
+                    <div class="p-4 rounded-lg bg-red-50 border border-red-200 mb-4">
+                        <h4 class="font-bold text-lg text-red-800">1. Jesus, o Salvador (A Cruz)</h4>
+                        <p>A base da nossa fé é que a humanidade, por causa do pecado, está separada de Deus. Jesus, através de Seu sacrifício na cruz, pagou o preço pelos nossos pecados, oferecendo perdão e reconciliação.</p>
+                    </div>
+
+                    <div class="p-4 rounded-lg bg-yellow-50 border border-yellow-200 mb-4">
+                        <h4 class="font-bold text-lg text-yellow-800">2. Jesus, o Batizador com o Espírito Santo (A Pomba)</h4>
+                        <p>Jesus nos envia o Consolador, o Espírito Santo, para nos encher de poder para a vida cristã e para o testemunho. Esta experiência capacita o crente a ser uma testemunha eficaz de Cristo.</p>
+                    </div>
+
+                    <div class="p-4 rounded-lg bg-blue-50 border border-blue-200 mb-4">
+                        <h4 class="font-bold text-lg text-blue-800">3. Jesus, o Médico Divino (O Cálice)</h4>
+                        <p>Cremos que a obra redentora de Cristo na cruz foi completa e abrange todas as áreas da nossa vida, incluindo nossa saúde física. A cura é uma parte integrante do que Jesus conquistou por nós.</p>
+                    </div>
+
+                    <div class="p-4 rounded-lg bg-purple-50 border border-purple-200 mb-4">
+                        <h4 class="font-bold text-lg text-purple-800">4. Jesus, o Rei que Voltará (A Coroa)</h4>
+                        <p>Cremos em uma volta literal, pessoal e visível de nosso Senhor. Esta é a nossa "bendita esperança", que nos motiva a viver em santidade e urgência.</p>
+                    </div>
+                `,
+                questions: [
+                    "Como a verdade de que Jesus levou nossas enfermidades na cruz fortalece a sua fé para orar por cura?",
+                    "Como a promessa da volta de Jesus lhe traz esperança e consolo?",
+                    "De que maneira a certeza de que Jesus voltará como Rei pode motivá-lo a viver de forma diferente hoje?",
+                    "Como você pode compartilhar essa 'bendita esperança' com outras pessoas?"
+                ]
+            },
+            {
+                title: "Lição 11: Vida do Discípulo",
+                objective: "Inspirar o novo crente a ver sua vida como uma jornada de crescimento, serviço e multiplicação de discípulos.",
+                content: `
+                    <h3 class="text-2xl font-bold mb-3">Os Próximos Passos na Jornada</h3>
+                    <p class="mb-4">O batismo não é a linha de chegada, mas o início de uma vida inteira de caminhada com Deus. A jornada do discípulo continua através de:</p>
+                    <ul class="list-disc list-inside space-y-2 mb-4">
+                        <li><b>Crescimento Contínuo:</b> Tornar-se cada dia mais parecido com Jesus (2 Pedro 3:18).</li>
+                        <li><b>Vida de Serviço:</b> Usar seus dons e talentos para abençoar outros e edificar a igreja.</li>
+                        <li><b>Multiplicação de Discípulos:</b> Ajudar outras pessoas a começarem sua própria jornada com Cristo.</li>
+                    </ul>
+                    <p class="mt-6 font-semibold">Sua jornada está apenas começando. Há um caminho maravilhoso de descobertas, crescimento e aventuras com Deus à sua frente. Permaneça firme!</p>
+                `,
+                questions: [
+                    "O batismo é um começo. Em que área da sua vida você mais deseja crescer nos próximos meses?",
+                    "Como você pode começar a servir a Deus e às pessoas ao seu redor de maneiras simples?",
+                    "A Bíblia compara a Igreja a um corpo (1 Coríntios 12). Como você pode descobrir e usar seus dons para encontrar seu lugar de serviço?",
+                    "Quem é a primeira pessoa com quem você pode compartilhar a história do que Jesus fez em sua vida?"
+                ]
+            }
+        ];
+
+        let currentLessonIndex = 0;
+        const contentArea = document.getElementById('content-area');
+        const lessonMenu = document.getElementById('lesson-menu');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const progressIndicator = document.getElementById('progress-indicator');
+
+        function renderLesson(index) {
+            if (index < 0 || index >= lessons.length) return;
+            currentLessonIndex = index;
+            const lesson = lessons[index];
+            
+            let html = `<div class="content-fade-in flex-grow">`;
+            if(lesson.title !== "Carta de Boas-Vindas") {
+                html += `<h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2">${lesson.title}</h1>`;
+            }
+            if(lesson.objective) {
+                html += `<p class="text-md text-red-600 font-medium mb-6">${lesson.objective}</p>`;
+            }
+            html += `<div class="prose max-w-none text-gray-700 text-lg leading-relaxed">${lesson.content}</div>`;
+            if (lesson.questions) {
+                html += `<div class="mt-10 pt-6 border-t-2 border-gray-200">
+                            <h4 class="text-xl font-bold mb-4 text-gray-800">Perguntas para Reflexão</h4>
+                            <ul class="space-y-3 list-decimal list-inside">`;
+                lesson.questions.forEach(q => {
+                    html += `<li class="text-gray-700">${q}</li>`;
+                });
+                html += `</ul></div>`;
+            }
+            html += `</div>`;
+            contentArea.innerHTML = html;
+            updateNavigation();
+            updateMenu();
+        }
+
+        function updateNavigation() {
+            prevBtn.disabled = currentLessonIndex === 0;
+            nextBtn.disabled = currentLessonIndex === lessons.length - 1;
+            prevBtn.classList.toggle('opacity-50', prevBtn.disabled);
+            prevBtn.classList.toggle('cursor-not-allowed', prevBtn.disabled);
+            nextBtn.classList.toggle('opacity-50', nextBtn.disabled);
+            nextBtn.classList.toggle('cursor-not-allowed', nextBtn.disabled);
+            progressIndicator.textContent = `Lição ${currentLessonIndex + 1} de ${lessons.length}`;
+        }
+
+        function updateMenu() {
+            const menuItems = lessonMenu.querySelectorAll('button');
+            menuItems.forEach((item, index) => {
+                if (index === currentLessonIndex) {
+                    item.classList.add('bg-red-100', 'text-red-700', 'font-bold');
+                    item.classList.remove('text-gray-600', 'hover:bg-gray-100');
+                } else {
+                    item.classList.remove('bg-red-100', 'text-red-700', 'font-bold');
+                    item.classList.add('text-gray-600', 'hover:bg-gray-100');
+                }
+            });
+        }
+
+        function populateMenu() {
+            if (lessonMenu.children.length > 0) return; // Populate only once
+            lessons.forEach((lesson, index) => {
+                const button = document.createElement('button');
+                button.className = 'w-full text-left py-2 px-4 rounded-lg transition-colors duration-200 text-gray-600 hover:bg-gray-100 font-medium';
+                button.textContent = lesson.title;
+                button.onclick = () => renderLesson(index);
+                lessonMenu.appendChild(button);
+            });
+        }
+
+        prevBtn.addEventListener('click', () => {
+            if (currentLessonIndex > 0) renderLesson(currentLessonIndex - 1);
+        });
+        nextBtn.addEventListener('click', () => {
+            if (currentLessonIndex < lessons.length - 1) renderLesson(currentLessonIndex + 1);
+        });
+        
+        // Initialize the discipleship course when the container is first shown
+        startDiscipleshipBtn.addEventListener('click', () => {
+            populateMenu();
+            renderLesson(0);
+        });
+    </script>
 </body>
-</html>
+</ht
